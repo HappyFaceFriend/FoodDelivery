@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf7219bab7fe46a1ad266029b2fee19, type: 3}
+  m_Name: Readme
+  m_EditorClassIdentifier: 
+  icon: {fileID: 2800000, guid: 407619c5c19a54982b3880b5a085c597, type: 3}
+  iconMaxWidth: 192
+  title: Puppet Kid
+  sections:
+  - heading: About
+    text: Thank you for purchasing the Puppet Kid asset. This lowpoly
+      stylized character is ideal to build or prototype your game.
+    linkText: 
+    url: 
+  - heading: Optimization
+    text: This character is extremely light and can be used in both pc and mobile
+      games. The texture file is optimized and allows you to customize the colors
+      according to your needs just by adjusting the material offset.
+    linkText: 
+    url: 
+  - heading: PolyCount
+    text: "4.6k Tris"
+    linkText: 
+    url: 
+  - heading: Contact/Support
+    text: 
+    linkText: Asset Store Profile
+    url: https://assetstore.unity.com/publishers/20594
+  - heading: 
+    text: 
+    linkText: 
+    url: 
+  loadedLayout: 1
