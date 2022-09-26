@@ -2,27 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveState : PlayerState
+namespace PlayerStates
 {
-    public MoveState(PlayerBehaviour player) : base("Move", player)
+    public class MoveState : PlayerState
     {
-    }
-    public override void OnUpdate()
-    {
-        base.OnUpdate();
-
-        Vector3 moveDir = Player.GetInputVector();
-
-        transform.Translate(moveDir * Player.MoveSpeed * Time.deltaTime, Space.World);
-
-        if (moveDir != Vector3.zero)
+        public MoveState(PlayerBehaviour player) : base("Move", player)
         {
-            Quaternion toRotation = Quaternion.LookRotation(moveDir, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, Player.RotateSpeed * Time.deltaTime);
         }
-        else
+        public override void OnUpdate()
         {
-            Player.ChangeState(new IdleState(Player));
+            base.OnUpdate();
+
+            Vector3 moveDir = Player.GetInputVector();
+
+            transform.Translate(moveDir * Player.MoveSpeed * Time.deltaTime, Space.World);
+
+            if (moveDir != Vector3.zero)
+            {
+                Quaternion toRotation = Quaternion.LookRotation(moveDir, Vector3.up);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, Player.RotateSpeed * Time.deltaTime);
+            }
+            else
+            {
+                Player.ChangeState(new IdleState(Player));
+            }
         }
     }
+
 }

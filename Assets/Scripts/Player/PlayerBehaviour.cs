@@ -15,11 +15,11 @@ public class PlayerBehaviour : StateMachineBase
     {
         float hor = Input.GetAxis("Horizontal");
         float ver = Input.GetAxis("Vertical");
-        return new Vector3(hor, 0, ver);
+        return new Vector3(hor, 0, ver).normalized;
     }
     protected override StateBase GetInitialState()
     {
-        return new IdleState(this);
+        return new PlayerStates.IdleState(this);
     }
     private void Update()
     {

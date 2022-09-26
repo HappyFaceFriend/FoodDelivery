@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleState : PlayerState
+namespace PlayerStates
 {
-    public IdleState(PlayerBehaviour player) : base("Idle", player)
+    public class IdleState : PlayerState
     {
-    }
-    public override void OnUpdate()
-    {
-        base.OnUpdate();
-        if (Player.GetInputVector().magnitude > 0)
-            Player.ChangeState(new MoveState(Player));
+        public IdleState(PlayerBehaviour player) : base("Idle", player)
+        {
+        }
+        public override void OnUpdate()
+        {
+            base.OnUpdate();
+            if (Player.GetInputVector().magnitude > 0)
+                Player.ChangeState(new MoveState(Player));
 
+        }
     }
 }
