@@ -28,5 +28,6 @@ public class PlayerBehaviour : StateMachineBase
         {
             Animator.SetTrigger("Attack");
         }
+        
     }
 }
