@@ -10,7 +10,12 @@ public class PlayerBehaviour : StateMachineBase
     public float MoveSpeed { get { return _moveSpeed; } }
     public float RotateSpeed { get { return _rotateSpeed; } }
 
+    public AttackController AttackController { get; private set; }
 
+    private void Awake()
+    {
+        AttackController = GetComponent<AttackController>();
+    }
     public Vector3 GetInputVector()
     {
         float hor = Input.GetAxis("Horizontal");
@@ -20,13 +25,5 @@ public class PlayerBehaviour : StateMachineBase
     protected override StateBase GetInitialState()
     {
         return new PlayerStates.IdleState(this);
-    }
-    private void Update()
-    {
-        base.Update();
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            Animator.SetTrigger("Attack");
-        }
     }
 }

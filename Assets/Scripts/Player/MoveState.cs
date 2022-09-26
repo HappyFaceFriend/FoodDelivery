@@ -26,6 +26,11 @@ namespace PlayerStates
             {
                 Player.ChangeState(new IdleState(Player));
             }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Player.AttackController.CastAttack();
+            }
         }
     }
 

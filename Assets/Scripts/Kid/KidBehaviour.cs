@@ -16,6 +16,10 @@ public class KidBehaviour : StateMachineBase
             return _player;
         }
     }
+    public void OnGetHitted(float stunDuration)
+    {
+        ChangeState(new KidStates.StunnedState(this, stunDuration));
+    }
     private void Awake()
     {
         if (Random.Range(0f, 1f) > 0.5f)
