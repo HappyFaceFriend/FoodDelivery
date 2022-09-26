@@ -7,7 +7,6 @@ public class AttackHitbox : MonoBehaviour
     [SerializeField] AttackController _attackController;
     private void OnTriggerEnter(Collider other)
     {
-        print(other.name);
         KidBehaviour kid = other.GetComponent<KidBehaviour>();
         if (kid != null)
         {

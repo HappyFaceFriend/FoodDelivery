@@ -56,7 +56,6 @@ public class StateMachineBaseEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-
         StateMachineBase stateMachine = (StateMachineBase)target;
         if (stateMachine.CurrentState == null)
             EditorGUILayout.LabelField("Current State : ", "null");

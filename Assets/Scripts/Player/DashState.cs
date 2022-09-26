@@ -1,23 +1,24 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace PlayerStates
 {
-    public class MoveState : PlayerState
+    public class DashState : PlayerState
     {
-        public MoveState(PlayerBehaviour player) : base("Move", player)
-        { }
+        public DashState(PlayerBehaviour player) : base("Dash", player)
+        {
+        }
         public override void OnUpdate()
         {
             base.OnUpdate();
 
+            if (Input.GetKeyUp(KeyCode.E))
+                Player.ChangeState(new MoveState(Player));
+
             Vector3 moveDir = Player.GetInputVector();
 
-            transform.Translate(moveDir * Player.MoveSpeed * Time.deltaTime, Space.World);
-
-            if (Input.GetKey(KeyCode.E))
-                Player.ChangeState(new DashState(Player));
+            transform.Translate(moveDir * Player.MoveSpeed * Time.deltaTime * 2, Space.World);
 
             if (moveDir != Vector3.zero)
             {
@@ -27,11 +28,6 @@ namespace PlayerStates
             else
             {
                 Player.ChangeState(new IdleState(Player));
-            }
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Player.AttackController.CastAttack();
             }
         }
     }
