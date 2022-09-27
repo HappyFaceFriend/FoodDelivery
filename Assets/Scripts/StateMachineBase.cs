@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 public class StateMachineBase : MonoBehaviour
 {
     private StateBase _currentState;
@@ -51,6 +53,7 @@ public class StateMachineBase : MonoBehaviour
     }
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(StateMachineBase), true)]
 public class StateMachineBaseEditor : Editor
 {
@@ -65,3 +68,4 @@ public class StateMachineBaseEditor : Editor
         Repaint();
     }
 }
+#endif

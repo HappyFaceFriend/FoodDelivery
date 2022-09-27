@@ -13,12 +13,12 @@ namespace PlayerStates
         {
             base.OnUpdate();
 
-            if (Input.GetKeyUp(KeyCode.E))
+            if (Input.GetKeyUp(KeyCode.C))
                 Player.ChangeState(new MoveState(Player));
 
             Vector3 moveDir = Player.GetInputVector();
 
-            transform.Translate(moveDir * Player.MoveSpeed * Time.deltaTime * 2, Space.World);
+            transform.Translate(moveDir * Player.DashSpeed * Time.deltaTime, Space.World);
 
             if (moveDir != Vector3.zero)
             {

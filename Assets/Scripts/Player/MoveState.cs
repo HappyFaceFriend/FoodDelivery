@@ -16,7 +16,7 @@ namespace PlayerStates
 
             transform.Translate(moveDir * Player.MoveSpeed * Time.deltaTime, Space.World);
 
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKey(KeyCode.C))
                 Player.ChangeState(new DashState(Player));
 
             if (moveDir != Vector3.zero)
@@ -29,7 +29,7 @@ namespace PlayerStates
                 Player.ChangeState(new IdleState(Player));
             }
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && Player.AttackController.CanAttack())
             {
                 Player.AttackController.CastAttack();
             }

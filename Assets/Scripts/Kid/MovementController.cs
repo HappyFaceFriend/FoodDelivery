@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
+    [SerializeField] float _followSpeed;
     [SerializeField] float _moveSpeed;
     [SerializeField] float _rotateSpeed;
-    public void MoveAndRotateTowards(Vector3 position, float epsilon)
+    public void MoveAndRotateTowards(Vector3 position, float epsilon, bool isFollow = false)
     {
         Vector3 moveDir = position - transform.position;
         float size = moveDir.magnitude;
         moveDir /= size;
         if (size > epsilon)
         {
-            transform.Translate(moveDir * _moveSpeed * Time.deltaTime, Space.World);
+            if (isFollow)
+                transform.Translate(moveDir * _followSpeed * Time.deltaTime, Space.World);
+            else
+                transform.Translate(moveDir * _moveSpeed * Time.deltaTime, Space.World);
         }
 
 

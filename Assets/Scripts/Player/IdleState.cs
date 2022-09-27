@@ -15,7 +15,7 @@ namespace PlayerStates
             if (Player.GetInputVector().magnitude > 0)
                 Player.ChangeState(new MoveState(Player));
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && Player.AttackController.CanAttack())
             {
                 Player.AttackController.CastAttack();
             }

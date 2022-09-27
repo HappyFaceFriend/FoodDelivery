@@ -13,8 +13,14 @@ public class AttackController : MonoBehaviour
     {
         _player = GetComponent<PlayerBehaviour>();
     }
+    public bool CanAttack()
+    {
+        return !_player.Animator.GetCurrentAnimatorStateInfo(1).IsName("Attack");
+    }
     public void CastAttack()
     {
+
+        SoundManager.Instance.PlaySound(SoundManager.Instance.AttackSound);
         _player.Animator.SetTrigger("Attack");
         _hitBox.gameObject.SetActive(true);
     }
