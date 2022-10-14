@@ -7,7 +7,6 @@ public class PlayerBehaviour : StateMachineBase
     [SerializeField] float _moveSpeed;
     [SerializeField] float _dashSpeed;
     [SerializeField] float _rotateSpeed;
-    [SerializeField] LevelManager _levelManager;
 
     public float MoveSpeed { get { return _moveSpeed; } }
     public float DashSpeed { get { return _dashSpeed; } }
@@ -34,7 +33,6 @@ public class PlayerBehaviour : StateMachineBase
     }
     public void OnAttackedByKid(KidBehaviour attackedKid)
     {
-        _levelManager.GameOver(attackedKid);
         ChangeState(new PlayerStates.LoseState(this));
     }
     public void OnGameClear()
