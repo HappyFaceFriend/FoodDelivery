@@ -8,6 +8,7 @@ namespace PlayerStates
     {
         public LoseState(PlayerBehaviour player) : base("Lose", player)
         {
+            GameObject.Find("Canvas").transform.Find("GameOverPanel").gameObject.SetActive(true);
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerBehaviour : StateMachineBase
 {
@@ -17,7 +18,9 @@ public class PlayerBehaviour : StateMachineBase
     private void Awake()
     {
         AttackController = GetComponent<AttackController>();
+
     }
+
     public Vector3 GetInputVector()
     {
         float hor = Input.GetAxis("Horizontal");
