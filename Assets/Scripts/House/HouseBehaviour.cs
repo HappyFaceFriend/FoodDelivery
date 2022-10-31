@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoodBehaviour : MonoBehaviour
+public class HouseBehaviour : MonoBehaviour
 {
-	public Food data;
+	public House data;
 	public void OnCollideWithPlayer()
 	{
-		Destroy(this.gameObject);
+		
 	}
 
+	public House getHouse()
+    {
+		return this.data;
+    }
 }

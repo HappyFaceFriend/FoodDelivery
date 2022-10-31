@@ -5,7 +5,6 @@ using UnityEngine;
 public class KidBehaviour : StateMachineBase
 {
     PlayerBehaviour _player;
-    FoodCount _foodCount;
     [SerializeField] float _patrolAngle;
     [SerializeField] float _followDuration;
     [SerializeField] GameObject _hitEffectPrefab;
