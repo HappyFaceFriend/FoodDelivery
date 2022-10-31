@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class PlayerBehaviour : StateMachineBase
 {
     [SerializeField] float _moveSpeed;
     [SerializeField] float _dashSpeed;
     [SerializeField] float _rotateSpeed;
+
+    public FoodManager FoodManager;
+    public OrderManager OrderManager;
 
     public float MoveSpeed { get { return _moveSpeed; } }
     public float DashSpeed { get { return _dashSpeed; } }
@@ -22,7 +26,7 @@ public class PlayerBehaviour : StateMachineBase
     {
         float hor = Input.GetAxis("Horizontal");
         float ver = Input.GetAxis("Vertical");
-        Vector3 vec =  new Vector3(hor, 0, ver);
+        Vector3 vec = new Vector3(hor, 0, ver);
         if (vec.sqrMagnitude > 1)
             vec.Normalize();
         return vec;
@@ -38,5 +42,41 @@ public class PlayerBehaviour : StateMachineBase
     public void OnGameClear()
     {
         ChangeState(new PlayerStates.WinState(this));
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        FoodBehaviour food = other.GetComponent<FoodBehaviour>();
+        HouseBehaviour house = other.GetComponent<HouseBehaviour>();
+
+        if (food != null)
+        {
+            food.OnCollideWithPlayer();
+            FoodManager.AddFood(food.data);
+        }
+
+        if (house != null)
+        {
+            for (int i = 0; i < OrderManager.orderlist.Count; i++)
+            {
+                if (OrderManager.orderlist[i].destination == house.getHouse())
+                {
+                    List<Food> templist = FoodManager.FoodList.Intersect(OrderManager.orderlist[i].Foodlist).ToList();
+                    templist.Sort();
+                    OrderManager.orderlist[i].Foodlist.Sort();
+                    bool same = templist.SequenceEqual(OrderManager.orderlist[i].Foodlist);
+
+                    if (same)
+                    {
+                        for (int j = 0; j < OrderManager.orderlist[i].Foodlist.Count; j++)
+                        {
+                            FoodManager.FoodList.Remove(OrderManager.orderlist[i].Foodlist[j]);
+                        }
+                        OrderManager.orderlist.RemoveAt(i);
+                        Debug.Log("배달 완료했습니다");
+                    }
+                }
+            }
+        }
     }
 }
