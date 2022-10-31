@@ -56,5 +56,14 @@ public class OrderManager : MonoBehaviour
         {
             updateTime += Time.deltaTime;
         }
+
+        if(orderlist.Count > 0)
+        {
+            for(int i =0; i < orderlist.Count; i++)
+            {
+                orderlist[i].timelimit -= Time.deltaTime;
+                if (orderlist[i].timelimit <= 0) orderlist.RemoveAt(i);
+            }
+        }
     }
 }
