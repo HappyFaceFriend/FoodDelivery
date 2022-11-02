@@ -21,7 +21,9 @@ public class PlayerBehaviour : StateMachineBase
     private void Awake()
     {
         AttackController = GetComponent<AttackController>();
+
     }
+
     public Vector3 GetInputVector()
     {
         float hor = Input.GetAxis("Horizontal");

@@ -8,6 +8,7 @@ public class KidBehaviour : StateMachineBase
     [SerializeField] float _patrolAngle;
     [SerializeField] float _followDuration;
     [SerializeField] GameObject _hitEffectPrefab;
+
     public float PatrolAngle { get{ return  _patrolAngle; } }
     public float FollowDuration { get{ return _followDuration; } }
     public PlayerBehaviour Player 
@@ -19,6 +20,7 @@ public class KidBehaviour : StateMachineBase
             return _player;
         }
     }
+
     public void OnGetHitted(float stunDuration)
     {
         if (CurrentState.GetType() != typeof(KidStates.LoseState) ||
@@ -28,6 +30,7 @@ public class KidBehaviour : StateMachineBase
     private void Awake()
     {
     }
+
     protected override StateBase GetInitialState()
     {
         return new KidStates.IdleState(this);

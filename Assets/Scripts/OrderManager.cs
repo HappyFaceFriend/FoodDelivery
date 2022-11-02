@@ -6,12 +6,17 @@ public class OrderManager : MonoBehaviour
 {
     public List<Order> orderlist = new List<Order>();
 
+
     [SerializeField] float updateTime = 0.0f;
     [SerializeField] float freq = 30.0f;
 
     [SerializeField] List<House> houselist;
     [SerializeField] List<Food> foodlist;
 
+
+    [Header("Test")]
+    [SerializeField] bool stopOrderTime = false;
+    [SerializeField] bool stopTimeCount = false;
     void MakeOrder()
     {
         Order data = new Order();
@@ -54,15 +59,18 @@ public class OrderManager : MonoBehaviour
 
         else
         {
-            updateTime += Time.deltaTime;
+            if(!stopOrderTime)
+               updateTime += Time.deltaTime;
         }
 
         if(orderlist.Count > 0)
         {
             for(int i =0; i < orderlist.Count; i++)
             {
-                orderlist[i].timelimit -= Time.deltaTime;
-                if (orderlist[i].timelimit <= 0) orderlist.RemoveAt(i);
+                if(!stopTimeCount)
+                    orderlist[i].timelimit -= Time.deltaTime;
+                if (orderlist[i].timelimit <= 0) 
+                    orderlist.RemoveAt(i);
             }
         }
     }

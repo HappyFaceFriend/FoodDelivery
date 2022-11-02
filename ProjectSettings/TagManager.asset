@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Car
+  - Diamond
+  - Kid
+  - Food
   layers:
   - Default
   - TransparentFX
@@ -16,7 +18,7 @@ TagManager:
   - Obstacles
   - Kids
   - PlayerWeapon
-  - 
+  - Food
   - 
   - 
   - 
