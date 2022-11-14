@@ -50,7 +50,7 @@ public class PlayerBehaviour : StateMachineBase
     {
         FoodBehaviour food = other.GetComponent<FoodBehaviour>();
         HouseBehaviour house = other.GetComponent<HouseBehaviour>();
-
+        CarBehaviour car = other.GetComponent<CarBehaviour>();
         if (food != null)
         {
             food.OnCollideWithPlayer();
@@ -79,6 +79,10 @@ public class PlayerBehaviour : StateMachineBase
                     }
                 }
             }
+        }
+        if (car != null)
+        {
+            car.OnCollideWithPlayer();
         }
     }
 }

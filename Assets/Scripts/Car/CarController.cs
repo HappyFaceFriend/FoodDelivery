@@ -3,13 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CarController : MonoBehaviour
-{   
+{
+    [SerializeField] CarBehaviour carprefab;
+    [SerializeField] Transform[] startpoint;
+    [SerializeField] float updateTime = 0.0f;
+    [SerializeField] float freq = 5.0f;
+
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Car")
+        CarBehaviour car = other.GetComponent<CarBehaviour>();
+
+        if (car != null)
         {
-            Destroy(other.gameObject);
-            Debug.Log("닿았습니다");
+            car.OnCollideWithController();
+        }
+    }
+
+    void CarSpawn()
+    {
+        CarBehaviour car = Instantiate(carprefab);
+        int randompoint = Random.Range(0, 4);
+        car.transform.position = startpoint[randompoint].position;
+        if (randompoint == 1 || randompoint == 3) car.checkpoint = -1;
+    }
+
+    void Update() // freq 시간마다 주문 생성 
+    {
+
+        if (updateTime > freq)
+        {
+            CarSpawn();
+            updateTime = 0;
+        }
+
+        else
+        {
+            updateTime += Time.deltaTime;
         }
     }
 }
