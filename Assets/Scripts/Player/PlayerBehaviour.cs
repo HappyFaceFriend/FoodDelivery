@@ -46,16 +46,15 @@ public class PlayerBehaviour : StateMachineBase
         ChangeState(new PlayerStates.WinState(this));
     }
 
-    void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        FoodBehaviour food = other.GetComponent<FoodBehaviour>();
-        HouseBehaviour house = other.GetComponent<HouseBehaviour>();
-        CarBehaviour car = other.GetComponent<CarBehaviour>();
+        FoodBehaviour food = collision.transform.GetComponentInParent<FoodBehaviour>();
         if (food != null)
         {
             food.OnCollideWithPlayer();
             FoodManager.AddFood(food.data);
         }
+        HouseBehaviour house = collision.transform.GetComponentInParent<HouseBehaviour>();
 
         if (house != null)
         {
@@ -80,6 +79,10 @@ public class PlayerBehaviour : StateMachineBase
                 }
             }
         }
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        CarBehaviour car = other.GetComponent<CarBehaviour>();
         if (car != null)
         {
             car.OnCollideWithPlayer();
