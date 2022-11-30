@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Cake
   m_EditorClassIdentifier: 
   Name: Cake
+  Icon: {fileID: 21300000, guid: 03adf6d859878664e9578a8ca1794c55, type: 3}
