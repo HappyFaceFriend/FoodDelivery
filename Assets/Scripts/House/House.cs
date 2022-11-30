@@ -7,6 +7,7 @@ using UnityEngine;
 public class House : ScriptableObject
 {
     public string HouseName;
+    public Sprite Icon;
     public void Introduce()
     {
         Debug.Log("Áý ÀÌ¸§ : " + HouseName);

@@ -74,7 +74,7 @@ public class PlayerBehaviour : StateMachineBase
                         {
                             FoodManager.FoodList.Remove(OrderManager.orderlist[i].Foodlist[j]);
                         }
-                        OrderManager.orderlist.RemoveAt(i);
+                        OrderManager.CompleteOrder(OrderManager.orderlist[i]);
                         Debug.Log("배달 완료했습니다");
                     }
                 }

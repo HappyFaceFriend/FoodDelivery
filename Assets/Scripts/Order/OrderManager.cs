@@ -13,6 +13,8 @@ public class OrderManager : MonoBehaviour
     [SerializeField] List<House> houselist;
     [SerializeField] List<Food> foodlist;
 
+    [SerializeField] OrdersPanel ordersPanel;
+
 
     [Header("Test")]
     [SerializeField] bool stopOrderTime = false;
@@ -42,9 +44,7 @@ public class OrderManager : MonoBehaviour
 
         orderlist.Add(data);
 
-        Debug.Log(data.Foodlist[0]);
-        Debug.Log("들을" + data.timelimit + "초 안에");
-        Debug.Log(data.destination.HouseName + "으로 배달해주세요");
+        ordersPanel.AddOrderSlot(data);
     }
 
     void Update() // freq 시간마다 주문 생성 
@@ -69,9 +69,17 @@ public class OrderManager : MonoBehaviour
             {
                 if(!stopTimeCount)
                     orderlist[i].timelimit -= Time.deltaTime;
-                if (orderlist[i].timelimit <= 0) 
+                if (orderlist[i].timelimit <= 0)
+                {
+                    ordersPanel.RemoveOrderSlot(orderlist[i]);
                     orderlist.RemoveAt(i);
+                }
             }
         }
+    }
+    public void CompleteOrder(Order order)
+    {
+        ordersPanel.RemoveOrderSlot(order);
+        orderlist.Remove(order);
     }
 }
