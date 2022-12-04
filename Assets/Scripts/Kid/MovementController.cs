@@ -35,9 +35,19 @@ public class MovementController : MonoBehaviour
         }
 
     }
+    public void RotateTowards(Quaternion targetRotation)
+    {
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _rotateSpeed * Time.deltaTime);
+        
+    }
+    public bool HasArrived()
+    {
+        return agent.remainingDistance < 0.01;
+    }
     public void MoveTo(Vector3 targetPosition)
     {
         agent.SetDestination(targetPosition);
+        
         agent.isStopped = false;
     }
     public void StopMove()
