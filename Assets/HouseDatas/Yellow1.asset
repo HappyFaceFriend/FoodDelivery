@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Yellow1
   m_EditorClassIdentifier: 
   HouseName: Yellow1
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 5c0961139fb0ad34e833f7d267766fc5, type: 3}
+  ordercheck: 1
