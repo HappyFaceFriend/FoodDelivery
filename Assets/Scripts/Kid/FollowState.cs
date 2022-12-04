@@ -20,8 +20,8 @@ namespace KidStates
         public override void OnUpdate()
         {
             base.OnUpdate();
-            _movementController.MoveAndRotateTowards(Player.transform.position, 0.05f, true);
-
+            // _movementController.MoveAndRotateTowards(Player.transform.position, 0.05f, true);
+            _movementController.MoveTo(Player.transform.position);
             _eTime += Time.deltaTime;
             if (_eTime >= Kid.FollowDuration)
             {
