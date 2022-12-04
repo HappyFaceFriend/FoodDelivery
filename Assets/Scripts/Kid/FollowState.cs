@@ -11,6 +11,7 @@ namespace KidStates
         public FollowState(KidBehaviour kid) : base("Follow", kid)
         {
             _movementController = Kid.GetComponent<MovementController>();
+            kid.Group.AlertAllKids(kid);
         }
         public override void OnEnter()
         {
@@ -20,12 +21,12 @@ namespace KidStates
         public override void OnUpdate()
         {
             base.OnUpdate();
-            _movementController.MoveAndRotateTowards(Player.transform.position, 0.05f, true);
-
+            // _movementController.MoveAndRotateTowards(Player.transform.position, 0.05f, true);
+            _movementController.MoveTo(Player.transform.position);
             _eTime += Time.deltaTime;
             if (_eTime >= Kid.FollowDuration)
             {
-                Kid.ChangeState(new PatrolState(Kid));
+                Kid.ChangeState(new ReturnState(Kid));
             }
         }
         

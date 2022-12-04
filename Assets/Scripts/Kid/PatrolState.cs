@@ -18,14 +18,14 @@ namespace KidStates
         public override void OnUpdate()
         {
             base.OnUpdate();
-            Vector3 nextPosition = transform.position + transform.forward
-                + transform.right * Mathf.Tan(Kid.PatrolAngle * Mathf.Deg2Rad);    
-            _movementController.MoveAndRotateTowards(nextPosition, 0.05f);
-
+            //_movementController.MoveAndRotateTowards(nextPosition, 0.05f);
             _eTime += Time.deltaTime;
             if (_eTime >= _checkInterval)
             {
                 _eTime -= _checkInterval;
+                Vector3 nextPosition = transform.position + transform.forward
+                    + transform.right * Mathf.Tan(Kid.PatrolAngle * Mathf.Deg2Rad);
+                _movementController.MoveTo(nextPosition);
                 var collisions = _fov.GetTransformsInView();
                 PlayerBehaviour target = null;
                 foreach (Transform t in collisions)

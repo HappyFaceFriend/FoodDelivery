@@ -9,10 +9,17 @@ public class KidBehaviour : StateMachineBase
     [SerializeField] float _followDuration;
     [SerializeField] GameObject _hitEffectPrefab;
 
-    public float PatrolAngle { get{ return  _patrolAngle; } }
-    public float FollowDuration { get{ return _followDuration; } }
-    public PlayerBehaviour Player 
-    { 
+    public KidGroup Group;
+
+    public float PatrolAngle { get { return _patrolAngle; } }
+    public float FollowDuration { get { return _followDuration; } }
+
+    bool IsGameOver { get { return CurrentState is KidStates.LoseState || CurrentState is KidStates.WinState; } }
+
+    public Vector3 OriginalPosition { get; private set; }
+    public Quaternion OriginalRotation { get; private set; }
+    public PlayerBehaviour Player
+    {
         get
         {
             if (_player == null)
@@ -20,7 +27,18 @@ public class KidBehaviour : StateMachineBase
             return _player;
         }
     }
-
+    private void Update()
+    {
+        base.Update();
+        if (Group.State == GroupState.Follow &&
+                !(CurrentState is KidStates.FollowState || CurrentState is KidStates.StunnedState) &&
+                !IsGameOver)
+            ChangeState(new KidStates.FollowState(this));
+    }
+    public void AlertByMate()
+    {
+        ChangeState(new KidStates.FollowState(this));
+    }
     public void OnGetHitted(float stunDuration)
     {
         if (CurrentState.GetType() != typeof(KidStates.LoseState) ||
@@ -29,6 +47,8 @@ public class KidBehaviour : StateMachineBase
     }
     private void Awake()
     {
+        OriginalPosition = transform.position;
+        OriginalRotation = transform.rotation;
     }
 
     protected override StateBase GetInitialState()
@@ -38,15 +58,6 @@ public class KidBehaviour : StateMachineBase
 
     private void OnCollisionEnter(Collision collision)
     {
-        OnCollision(collision);
-    }
-    private void OnCollisionStay(Collision collision)
-    {
-        OnCollision(collision);
-    }
-    void OnCollision(Collision collision)
-    {
-
         if (CurrentState.GetType() == typeof(KidStates.FollowState))
         {
             if (collision.gameObject.tag == "Player")

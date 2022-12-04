@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Red1
   m_EditorClassIdentifier: 
   HouseName: Red1
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: bd769f2cddc281341abef9a9b2a7416c, type: 3}
+  ordercheck: 1
