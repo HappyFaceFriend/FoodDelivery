@@ -22,20 +22,38 @@ public class OrderManager : MonoBehaviour
     [Header("Test")]
     [SerializeField] bool stopOrderTime = false;
     [SerializeField] bool stopTimeCount = false;
+    
+    /*int count = 0;
+    int[] housenumber = { 0, 1, 2, 3, 4, 5 };
+
+    int makeDest()
+    {
+        if(count%6 == 0)
+        {
+            Utils.Random.Shuffle(housenumber);
+            return housenumber[count % 6];
+        }
+        count++;
+        return housenumber[count % 6];
+    }*/
+
     void MakeOrder()
     {
         Order data = new Order();
-        int houseNum = Random.Range(1, 7);
-        if(houselist[houseNum - 1].ordercheck == false)
+        /*data.destination = houselist[makeDest()];*/
+
+        if(orderlist.Count == 0)
         {
-            while (houselist[houseNum - 1].ordercheck == true)
-            {
-                houseNum = Random.Range(1, 7);
-            }
+            int houseCount = Random.Range(0, 6);
+            data.destination = houselist[houseCount];
+            houselist.Remove(houselist[houseCount]);
         }
-        data.destination = houselist[houseNum - 1];
-        houselist[houseNum - 1].ordercheck = false;
-        Debug.Log(houselist[houseNum - 1].ordercheck);
+        else
+        {
+            int houseCount = Random.Range(0, 6- orderlist.Count);
+            data.destination = houselist[houseCount];
+            houselist.Remove(houselist[houseCount]);
+        }
 
         //가중치 적용
         int foodCount = Random.Range(1, 6);
@@ -98,8 +116,8 @@ public class OrderManager : MonoBehaviour
                 {
                     ordersPanel.RemoveOrderSlot(orderlist[i]);
                     orderlist.RemoveAt(i);
-                    orderlist[i].destination.ordercheck = true;
-                    for(int j =0; j < orderlist[i].Foodlist.Count; j++)
+                    houselist.Add(orderlist[i].destination);
+                    for (int j =0; j < orderlist[i].Foodlist.Count; j++)
                     {
                         orderlist[i].Foodlist[j].foodNum--;
                     }
@@ -111,5 +129,6 @@ public class OrderManager : MonoBehaviour
     {
         ordersPanel.RemoveOrderSlot(order);
         orderlist.Remove(order);
+        houselist.Add(order.destination);
     }
 }
