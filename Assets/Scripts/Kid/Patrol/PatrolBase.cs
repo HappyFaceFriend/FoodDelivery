@@ -11,7 +11,7 @@ public abstract class PatrolBase : MonoBehaviour
 
     [SerializeField] float FOVIncrease = 2f;
     public abstract string GetAnimName();
-    private void Awake()
+    protected void Awake()
     {
         Fov = GetComponent<FieldOfView>();
         Kid = GetComponent<KidBehaviour>();

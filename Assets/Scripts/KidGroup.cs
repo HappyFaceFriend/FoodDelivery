@@ -12,16 +12,35 @@ public class KidGroup : MonoBehaviour
     [SerializeField] float foodRegenTime=5;
     [SerializeField] FoodBehaviour food;
     [SerializeField] FoodBehaviour foodPrefab;
+    [SerializeField] List<Transform> targetPoints;
+    List<int> targetOwned;
 
     public GroupState State { get; private set; }
 
     Vector3 foodPosition;
 
+    public Transform GetRandomTargetPoint(Transform returningPoint)
+    {
+        List<int> freeTargets = new List<int>();
+        for (int i = 0; i < targetPoints.Count; i++)
+        {
+            if (!targetOwned.Contains(i))
+                freeTargets.Add(i);
+        }
+        if(returningPoint != null)
+            targetOwned.Remove(targetPoints.FindIndex(x=>x==returningPoint));
+
+        int idx = Utils.Random.RandomElement(freeTargets);
+
+        targetOwned.Add(idx);
+        return targetPoints[idx];
+    }
     public void Awake()
     {
         foreach (KidBehaviour kid in kids)
             kid.Group = this;
         foodPosition = food.transform.position;
+        targetOwned = new List<int>();
     }
     public void StartReturn(KidBehaviour startKid)
     {
