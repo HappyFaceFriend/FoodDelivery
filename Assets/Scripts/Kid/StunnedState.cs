@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace KidStates
 {
@@ -8,9 +9,17 @@ namespace KidStates
     {
         float _duration;
         float _eTime = 0f;
+
+        MovementController movement;
         public StunnedState(KidBehaviour kid, float duration) : base("Stunned", kid)
         {
             _duration = duration;
+            movement = kid.GetComponent<MovementController>();
+        }
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            movement.StopMove();
         }
         public override void OnUpdate()
         {
@@ -20,6 +29,10 @@ namespace KidStates
             {
                 Kid.ChangeState(new IdleState(Kid));
             }
+        }
+        public override void OnExit()
+        {
+            base.OnExit();
         }
     }
 }

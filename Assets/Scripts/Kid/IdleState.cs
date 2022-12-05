@@ -12,11 +12,11 @@ namespace KidStates
         public override void OnEnter()
         {
             base.OnEnter();
-            Kid.ChangeState(new PatrolState(Kid));
         }
         public override void OnUpdate()
         {
             base.OnUpdate();
+            Kid.ChangeState(new PatrolState(Kid));
 
         }
     }

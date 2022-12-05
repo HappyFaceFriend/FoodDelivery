@@ -23,7 +23,6 @@ namespace KidStates
             // _movementController.MoveAndRotateTowards(Player.transform.position, 0.05f, true);
             if(_movementController.HasArrived())
             {
-                Debug.Log("Has Arived " + Kid.name);
                 _movementController.StopMove();
                 _movementController.RotateTowards(Kid.OriginalRotation);
                 if(Quaternion.Angle(Kid.transform.rotation, Kid.OriginalRotation) < 5)

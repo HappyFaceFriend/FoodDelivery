@@ -8,6 +8,7 @@ public class PlayerBehaviour : StateMachineBase
     [SerializeField] float _moveSpeed;
     [SerializeField] float _dashSpeed;
     [SerializeField] float _rotateSpeed;
+    [SerializeField] float _stunDuration;
 
     public FoodManager FoodManager;
     public OrderManager OrderManager;
@@ -39,7 +40,9 @@ public class PlayerBehaviour : StateMachineBase
     }
     public void OnAttackedByKid(KidBehaviour attackedKid)
     {
-        ChangeState(new PlayerStates.LoseState(this));
+        if (CurrentState.GetType() != typeof(KidStates.LoseState) ||
+            CurrentState.GetType() != typeof(KidStates.WinState))
+            ChangeState(new PlayerStates.StunnedState(this, _stunDuration));
     }
     public void OnGameClear()
     {
