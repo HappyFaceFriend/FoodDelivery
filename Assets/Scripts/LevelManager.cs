@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField] float leftTime = 60f;
+    [SerializeField] OrderManager orderManager;
+    [SerializeField] Transform gameOverPanel;
+    [SerializeField] ResultPanel resultPanel;
+
+    int successCount = 0;
+    int failCount = 0;
+    int foodCount = 0;
+
     private void Start()
     {
         StartCoroutine(RoundCoroutine());
@@ -15,14 +24,29 @@ public class LevelManager : MonoBehaviour
 
         //게임 시작! 
         //ordermanager.start
-
+        orderManager.StopSystem = false;
         //시간 계쏙 측정
-
-        //시간 다되면 게임 종료
-        //
+        while(leftTime > 0)
+        {
+            leftTime -= Time.deltaTime;
+            yield return null;
+        }
+        leftTime = 0f;
+        orderManager.StopSystem = true;
         //결과 보여주고 씬 전환
-
+        resultPanel.Init(successCount, foodCount, failCount);
+        gameOverPanel.gameObject.SetActive(true);
         yield return null;
+    }
+
+    public void OnOrderFail()
+    {
+        failCount++;
+    }
+    public void OnOrderDeliver(int foodCount)
+    {
+        successCount++;
+        this.foodCount += foodCount;
     }
 
 }

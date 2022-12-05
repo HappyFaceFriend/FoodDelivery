@@ -6,7 +6,7 @@ public class OrderManager : MonoBehaviour
 {
     public List<Order> orderlist = new List<Order>();
 
-
+    [SerializeField] LevelManager levelManager;
     [SerializeField] float updateTime = 0.0f;
     [SerializeField] float freq = 30.0f;
     [SerializeField] float freqMinus = 5.0f;
@@ -22,6 +22,8 @@ public class OrderManager : MonoBehaviour
     [Header("Test")]
     [SerializeField] bool stopOrderTime = false;
     [SerializeField] bool stopTimeCount = false;
+
+    public bool StopSystem { get; set; } = false;
     
     /*int count = 0;
     int[] housenumber = { 0, 1, 2, 3, 4, 5 };
@@ -36,6 +38,7 @@ public class OrderManager : MonoBehaviour
         count++;
         return housenumber[count % 6];
     }*/
+
 
     void MakeOrder()
     {
@@ -56,10 +59,15 @@ public class OrderManager : MonoBehaviour
         }
 
         //가중치 적용
-        int foodCount = Random.Range(1, 6);
-        if (foodCount == 1 || foodCount == 2) foodCount = 1;
-        else if (foodCount == 3 || foodCount == 4) foodCount = 2;
-        else foodCount = 3;
+        float r = Random.Range(0f, 1f);
+        int foodCount = 1;
+        if (r < 0.6f)
+            foodCount = 1;
+        else if (r < 0.8f)
+            foodCount = 2;
+        else
+            foodCount = 3;
+
         data.timelimit = orderlimittime + foodCount*5;
 
 
@@ -91,11 +99,13 @@ public class OrderManager : MonoBehaviour
 
     void Update() // freq 시간마다 주문 생성 
     {
+        if (StopSystem)
+            return;
         // 주문 들어오는 시간
         if (updateTime > freq)
         {
             MakeOrder();
-            Debug.Log(orderlist.Count + "개의 주문받았습니다");
+            //Debug.Log(orderlist.Count + "개의 주문받았습니다");
             if(orderlist.Count > 1) updateTime = freqPlus;
             else if(orderlist.Count > 7) updateTime = -5000.0f;
             else updateTime = freqMinus;
@@ -116,6 +126,7 @@ public class OrderManager : MonoBehaviour
                 {
                     ordersPanel.RemoveOrderSlot(orderlist[i]);
                     orderlist.RemoveAt(i);
+                    levelManager.OnOrderFail();
                     houselist.Add(orderlist[i].destination);
                     for (int j =0; j < orderlist[i].Foodlist.Count; j++)
                     {
@@ -127,6 +138,7 @@ public class OrderManager : MonoBehaviour
     }
     public void CompleteOrder(Order order)
     {
+        levelManager.OnOrderDeliver(order.Foodlist.Count);
         ordersPanel.RemoveOrderSlot(order);
         orderlist.Remove(order);
         houselist.Add(order.destination);

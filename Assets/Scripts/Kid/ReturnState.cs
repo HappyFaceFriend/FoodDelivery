@@ -16,6 +16,12 @@ namespace KidStates
         {
             base.OnEnter();
             Kid.Group.StartReturn(Kid);
+            _movementController.SetSpeed(_movementController.FollowSpeed);
+        }
+        public override void OnExit()
+        {
+            base.OnExit();
+            _movementController.SetSpeed(_movementController.MoveSpeed);
         }
         public override void OnUpdate()
         {

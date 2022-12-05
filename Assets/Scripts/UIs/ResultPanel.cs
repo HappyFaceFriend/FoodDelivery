@@ -14,5 +14,11 @@ public class ResultPanel : MonoBehaviour
     [SerializeField] TextMeshProUGUI totalFoodText;
     [SerializeField] TextMeshProUGUI totalFailText;
 
+    public void Init(int deliveredCount, int foodCount, int failCount)
+    {
+        totalDeliveredText.text = deliveredCount.ToString();
+        totalFoodText.text = foodCount.ToString();
+        totalFailText.text = failCount.ToString();
+    }
 
 }
