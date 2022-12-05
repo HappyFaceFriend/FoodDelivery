@@ -3603,8 +3603,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e7f339d3b7e0e841b3864c015449963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kids:
-  - {fileID: 1221476995}
   foodRegenTime: 5
   food: {fileID: 362677306}
   foodPrefab: {fileID: -5866223814531698079, guid: 3e6b0aeeb5fa1ea41b01199c2bcf5337, type: 3}
@@ -5349,17 +5347,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 3
---- !u!114 &601636213 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2312054670083689966, guid: 64a9a015b002aa74cbab1e75574b1c30, type: 3}
-  m_PrefabInstance: {fileID: 601636209}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 601636211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a88d4fedddeea24e96e04c7bcc64d8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &601636214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6809,6 +6796,10 @@ PrefabInstance:
       value: paved_road_markings_straight_area_1
       objectReference: {fileID: 0}
     - target: {fileID: 6433585727693662299, guid: 91f37005e8ce642dea4d711a3e6db19c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6433585727693662299, guid: 91f37005e8ce642dea4d711a3e6db19c, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
@@ -7394,6 +7385,10 @@ PrefabInstance:
     - target: {fileID: 6433585727693662299, guid: 91f37005e8ce642dea4d711a3e6db19c, type: 3}
       propertyPath: m_Name
       value: paved_road_markings_straight_area_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6433585727693662299, guid: 91f37005e8ce642dea4d711a3e6db19c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6433585727693662299, guid: 91f37005e8ce642dea4d711a3e6db19c, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -8420,9 +8415,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e7f339d3b7e0e841b3864c015449963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kids:
-  - {fileID: 1998334382}
-  - {fileID: 601636213}
   foodRegenTime: 5
   food: {fileID: 1067707935}
   foodPrefab: {fileID: -5866223814531698079, guid: 3e6b0aeeb5fa1ea41b01199c2bcf5337, type: 3}
@@ -12191,17 +12183,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 3
---- !u!114 &1221476995 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2312054670083689966, guid: 64a9a015b002aa74cbab1e75574b1c30, type: 3}
-  m_PrefabInstance: {fileID: 813005323}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1221476990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a88d4fedddeea24e96e04c7bcc64d8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1221476998 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2312054670083689965, guid: 64a9a015b002aa74cbab1e75574b1c30, type: 3}
@@ -12302,8 +12283,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e7f339d3b7e0e841b3864c015449963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kids:
-  - {fileID: 1409089567}
   foodRegenTime: 5
   food: {fileID: 2131044542}
   foodPrefab: {fileID: -5866223814531698079, guid: 3e6b0aeeb5fa1ea41b01199c2bcf5337, type: 3}
@@ -14199,17 +14178,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64a9a015b002aa74cbab1e75574b1c30, type: 3}
---- !u!114 &1409089567 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2312054670083689966, guid: 64a9a015b002aa74cbab1e75574b1c30, type: 3}
-  m_PrefabInstance: {fileID: 1409089566}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1409089570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a88d4fedddeea24e96e04c7bcc64d8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1409089568 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2312054670083689965, guid: 64a9a015b002aa74cbab1e75574b1c30, type: 3}
@@ -15853,6 +15821,10 @@ PrefabInstance:
       value: grass_with_soil_area
       objectReference: {fileID: 0}
     - target: {fileID: 501218960617046695, guid: fc958925259a74dbd9512eda4f8ded4a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 501218960617046695, guid: fc958925259a74dbd9512eda4f8ded4a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
@@ -16735,6 +16707,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 196411f154adf44d88668eb81907ffb2, type: 3}
       propertyPath: m_Name
       value: paved_road_markings_straight_area_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 196411f154adf44d88668eb81907ffb2, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 196411f154adf44d88668eb81907ffb2, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -20578,17 +20554,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2312054670083689961, guid: 64a9a015b002aa74cbab1e75574b1c30, type: 3}
   m_PrefabInstance: {fileID: 1706195138}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1998334382 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2312054670083689966, guid: 64a9a015b002aa74cbab1e75574b1c30, type: 3}
-  m_PrefabInstance: {fileID: 1706195138}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1998334379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a88d4fedddeea24e96e04c7bcc64d8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1998334385 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2312054670083689965, guid: 64a9a015b002aa74cbab1e75574b1c30, type: 3}
