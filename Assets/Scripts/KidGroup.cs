@@ -8,7 +8,7 @@ public enum GroupState
 }
 public class KidGroup : MonoBehaviour
 {
-    [SerializeField] List<KidBehaviour> kids;
+    List<KidBehaviour> kids = new List<KidBehaviour>();
     [SerializeField] float foodRegenTime=5;
     [SerializeField] FoodBehaviour food;
     [SerializeField] FoodBehaviour foodPrefab;
@@ -37,6 +37,7 @@ public class KidGroup : MonoBehaviour
     }
     public void Awake()
     {
+        kids.AddRange(GetComponentsInChildren<KidBehaviour>());
         foreach (KidBehaviour kid in kids)
             kid.Group = this;
         foodPosition = food.transform.position;

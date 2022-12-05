@@ -19,11 +19,13 @@ namespace KidStates
         {
             base.OnEnter();
             SoundManager.Instance.PlaySound(SoundManager.Instance.AlertSound, 0.35f);
+            _movementController.SetSpeed(_movementController.FollowSpeed);
         }
         public override void OnExit()
         {
             base.OnExit();
             patrol.OnStopFollow();
+            _movementController.SetSpeed(_movementController.MoveSpeed);
         }
         public override void OnUpdate()
         {

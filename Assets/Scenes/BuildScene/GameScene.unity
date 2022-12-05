@@ -3585,7 +3585,7 @@ GameObject:
   - component: {fileID: 387447640}
   - component: {fileID: 387447639}
   m_Layer: 0
-  m_Name: Group (1)
+  m_Name: StayLookAroundGroup
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -8384,7 +8384,7 @@ GameObject:
   - component: {fileID: 893426669}
   - component: {fileID: 893426670}
   m_Layer: 0
-  m_Name: Group
+  m_Name: WalkCircleGroup
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -12284,7 +12284,7 @@ GameObject:
   - component: {fileID: 1254283816}
   - component: {fileID: 1254283815}
   m_Layer: 0
-  m_Name: Group (2)
+  m_Name: RunRandomGroup
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -14233,7 +14233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FOVIncrease: 2
-  runSpeed: 7
+  runSpeed: 5
   waitTime: 2
   target: {fileID: 0}
 --- !u!1001 &1419093165

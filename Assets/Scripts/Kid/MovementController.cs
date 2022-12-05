@@ -9,11 +9,18 @@ public class MovementController : MonoBehaviour
     [SerializeField] float _moveSpeed;
     [SerializeField] float _rotateSpeed;
 
+    public float FollowSpeed { get { return _followSpeed; } }
+    public float MoveSpeed { get { return _moveSpeed; } }
     NavMeshAgent agent;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        agent.speed = _moveSpeed;
+    }
+    public void SetSpeed(float speed)
+    {
+        agent.speed = speed;
     }
     public void MoveAndRotateTowards(Vector3 position, float epsilon, bool isFollow = false)
     {
