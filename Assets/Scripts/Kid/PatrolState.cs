@@ -9,10 +9,16 @@ namespace KidStates
         PatrolBase patrol;
 
         float _eTime = 0f;
-        float _checkInterval = 0.1f;
+        float _checkInterval = 0.05f;
         public PatrolState(KidBehaviour kid) : base("Patrol", kid)
         {
             patrol = kid.GetComponent<PatrolBase>();
+        }
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            patrol.OnEnter();
+            Kid.Animator.SetTrigger(patrol.GetAnimName());
         }
         public override void OnUpdate()
         {
@@ -24,8 +30,15 @@ namespace KidStates
             {
                 _eTime -= _checkInterval;
                 if (patrol.IsPlayerInSight())
-                    Kid.ChangeState(new FollowState(Kid));
+                {
+                    patrol.FollowPlayer();
+                }
             }
+        }
+        public override void OnExit()
+        {
+            base.OnExit();
+            patrol.OnExit();
         }
     }
 }

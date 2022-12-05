@@ -10,14 +10,20 @@ public class FieldOfView : MonoBehaviour
     [SerializeField] LayerMask _targetMask;
     [SerializeField] LayerMask _obstacleMask;
 
+    float _additionalRotation = 0;
+    public float ViewRadius { get { return _viewRadius; } set { _viewRadius = value; } }
+    public void SetAdditionalRotation(float y)
+    {
+        _additionalRotation = y;
+    }
     private void OnDrawGizmos()
     {
         Vector3 myPos = transform.position + Vector3.up * 0.5f;
         Gizmos.DrawWireSphere(myPos, _viewRadius);
 
-        float lookingAngle = transform.eulerAngles.y;
-        Vector3 rightDir = AngleToDir(transform.eulerAngles.y + _viewAngle * 0.5f);
-        Vector3 leftDir = AngleToDir(transform.eulerAngles.y - _viewAngle * 0.5f);
+        float lookingAngle = transform.eulerAngles.y + _additionalRotation;
+        Vector3 rightDir = AngleToDir(lookingAngle + _viewAngle * 0.5f);
+        Vector3 leftDir = AngleToDir(lookingAngle - _viewAngle * 0.5f);
         Vector3 lookDir = AngleToDir(lookingAngle);
 
         Debug.DrawRay(myPos, rightDir * _viewRadius, Color.blue);
@@ -39,7 +45,7 @@ public class FieldOfView : MonoBehaviour
         {
             Vector3 targetPos = collider.transform.position;
             Vector3 targetDir = (targetPos - transform.position).normalized;
-            float targetAngle = Mathf.Acos(Vector3.Dot(transform.forward, targetDir)) * Mathf.Rad2Deg;
+            float targetAngle = Mathf.Acos(Vector3.Dot(transform.forward + new Vector3(0,_additionalRotation, 0), targetDir)) * Mathf.Rad2Deg;
             if (targetAngle <= _viewAngle * 0.5f 
                 && !Physics.Raycast(transform.position, targetDir, _viewRadius, _obstacleMask))
             {

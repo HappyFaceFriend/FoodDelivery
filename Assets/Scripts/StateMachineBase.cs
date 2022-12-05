@@ -33,8 +33,8 @@ public class StateMachineBase : MonoBehaviour
     {
         _currentState.OnExit();
         _currentState = newState;
-        _currentState.OnEnter();
         _animator.SetTrigger(_currentState.Name);
+        _currentState.OnEnter();
     }
 
     protected virtual StateBase GetInitialState()

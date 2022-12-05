@@ -6,6 +6,8 @@ using UnityEngine;
 public class MoveCirclePatrol : PatrolBase
 {
     [SerializeField] float patrolAngle;
+
+    
     float _eTime = 0f;
     float _checkInterval = 0.1f;
     public override void Move()
@@ -18,5 +20,9 @@ public class MoveCirclePatrol : PatrolBase
                 + transform.right * Mathf.Tan(patrolAngle * Mathf.Deg2Rad);
             MoveController.MoveTo(nextPosition);
         }
+    }
+    public override string GetAnimName()
+    {
+        return "Patrol";
     }
 }

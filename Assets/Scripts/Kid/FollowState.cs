@@ -8,15 +8,22 @@ namespace KidStates
     {
         MovementController _movementController;
         float _eTime = 0f;
+        PatrolBase patrol;
         public FollowState(KidBehaviour kid) : base("Follow", kid)
         {
             _movementController = Kid.GetComponent<MovementController>();
+            patrol = Kid.GetComponent<PatrolBase>();
             kid.Group.AlertAllKids(kid);
         }
         public override void OnEnter()
         {
             base.OnEnter();
             SoundManager.Instance.PlaySound(SoundManager.Instance.AlertSound, 0.35f);
+        }
+        public override void OnExit()
+        {
+            base.OnExit();
+            patrol.OnStopFollow();
         }
         public override void OnUpdate()
         {
@@ -26,7 +33,8 @@ namespace KidStates
             _eTime += Time.deltaTime;
             if (_eTime >= Kid.FollowDuration)
             {
-                Kid.ChangeState(new ReturnState(Kid));
+                if(!patrol.IsPlayerInSight())
+                    Kid.ChangeState(new ReturnState(Kid));
             }
         }
         
