@@ -47,6 +47,15 @@ public class KidGroup : MonoBehaviour
     {
         State = GroupState.Returning;
     }
+    public void ReturnAllKids(KidBehaviour caller)
+    {
+        State = GroupState.Returning;
+        foreach (KidBehaviour kid in kids)
+        {
+            if(caller!= kid)
+                kid.ChangeState(new KidStates.ReturnState(kid));
+        }
+    }
     public void AlertAllKids(KidBehaviour observer)
     {
             State = GroupState.Follow;

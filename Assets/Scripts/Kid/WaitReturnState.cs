@@ -20,11 +20,13 @@ namespace KidStates
         public override void OnUpdate()
         {
             base.OnUpdate();
-            
+
+            transform.position = Kid.OriginalPosition;
+            transform.rotation = Kid.OriginalRotation;
+
+
             if (Kid.Group.State == GroupState.Patrol)
             {
-
-                Debug.Log("To patrol from REturn! " + Kid.name);
                 Kid.ChangeState(new PatrolState(Kid));
             }
 

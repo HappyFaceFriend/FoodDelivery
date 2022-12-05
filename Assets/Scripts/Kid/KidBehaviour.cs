@@ -65,7 +65,8 @@ public class KidBehaviour : StateMachineBase
                 Instantiate(_hitEffectPrefab, effectPos, Quaternion.identity);
                 SoundManager.Instance.PlaySound(SoundManager.Instance.HitSound);
                 Player.OnAttackedByKid(this);
-                ChangeState(new KidStates.WinState(this));
+                Group.ReturnAllKids(this);
+                ChangeState(new KidStates.ReturnState(this));
             }
         }
     }

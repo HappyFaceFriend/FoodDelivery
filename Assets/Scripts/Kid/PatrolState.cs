@@ -10,6 +10,8 @@ namespace KidStates
 
         float _eTime = 0f;
         float _checkInterval = 0.05f;
+
+        bool animIsIdle = false;
         public PatrolState(KidBehaviour kid) : base("Patrol", kid)
         {
             patrol = kid.GetComponent<PatrolBase>();
@@ -25,15 +27,32 @@ namespace KidStates
         {
             base.OnUpdate();
             //_movementController.MoveAndRotateTowards(nextPosition, 0.05f
-            patrol.Move();
+            bool doMove = true;
             _eTime += Time.deltaTime;
             if (_eTime >= _checkInterval)
             {
                 _eTime -= _checkInterval;
                 if (patrol.IsPlayerInSight())
                 {
-                    patrol.FollowPlayer();
+                    if(Player.CurrentState is PlayerStates.StunnedState)
+                    {
+                        if(doMove)
+                        {
+                            doMove = false;
+                            animIsIdle = true;
+                            Kid.Animator.SetTrigger("Idle");
+                        }
+
+                    }
+                    else
+                        patrol.FollowPlayer();
                 }
+            }
+            if(doMove)
+            {
+                if (animIsIdle)
+                    Kid.Animator.SetTrigger(patrol.GetAnimName());
+                patrol.Move();
             }
         }
         public override void OnExit()

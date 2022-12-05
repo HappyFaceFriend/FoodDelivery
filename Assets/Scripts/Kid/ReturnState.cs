@@ -16,6 +16,12 @@ namespace KidStates
         {
             base.OnEnter();
             Kid.Group.StartReturn(Kid);
+            _movementController.SetSpeed(_movementController.FollowSpeed);
+        }
+        public override void OnExit()
+        {
+            base.OnExit();
+            _movementController.SetSpeed(_movementController.MoveSpeed);
         }
         public override void OnUpdate()
         {
@@ -23,7 +29,6 @@ namespace KidStates
             // _movementController.MoveAndRotateTowards(Player.transform.position, 0.05f, true);
             if(_movementController.HasArrived())
             {
-                Debug.Log("Has Arived " + Kid.name);
                 _movementController.StopMove();
                 _movementController.RotateTowards(Kid.OriginalRotation);
                 if(Quaternion.Angle(Kid.transform.rotation, Kid.OriginalRotation) < 5)

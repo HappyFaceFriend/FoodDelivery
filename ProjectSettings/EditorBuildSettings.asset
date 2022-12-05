@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/TestScenes/YJScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/GAM_FoodSystem.unity
-    guid: d02aca21d35b0734ea37cd0ee1f3b5fd
+    path: Assets/Scenes/BuildScene/TitleScene.unity
+    guid: e8bf67abe5c6aac40946b8e85444d539
+  - enabled: 1
+    path: Assets/Scenes/BuildScene/GameScene.unity
+    guid: 36ab17e71e5b4b84ab2ab23f2a7aa008
   m_configObjects: {}
