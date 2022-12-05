@@ -6,38 +6,25 @@ namespace KidStates
 {
     public class PatrolState : KidState
     {
-        MovementController _movementController;
-        FieldOfView _fov;
+        PatrolBase patrol;
+
         float _eTime = 0f;
         float _checkInterval = 0.1f;
         public PatrolState(KidBehaviour kid) : base("Patrol", kid)
         {
-            _movementController = Kid.GetComponent<MovementController>();
-            _fov = Kid.GetComponent<FieldOfView>();
+            patrol = kid.GetComponent<PatrolBase>();
         }
         public override void OnUpdate()
         {
             base.OnUpdate();
-            //_movementController.MoveAndRotateTowards(nextPosition, 0.05f);
+            //_movementController.MoveAndRotateTowards(nextPosition, 0.05f
+            patrol.Move();
             _eTime += Time.deltaTime;
             if (_eTime >= _checkInterval)
             {
                 _eTime -= _checkInterval;
-                Vector3 nextPosition = transform.position + transform.forward
-                    + transform.right * Mathf.Tan(Kid.PatrolAngle * Mathf.Deg2Rad);
-                _movementController.MoveTo(nextPosition);
-                var collisions = _fov.GetTransformsInView();
-                PlayerBehaviour target = null;
-                foreach (Transform t in collisions)
-                {
-                    target = t.GetComponent<PlayerBehaviour>();
-                    if (target != null)
-                        break;
-                }
-                if (target != null)
-                {
+                if (patrol.IsPlayerInSight())
                     Kid.ChangeState(new FollowState(Kid));
-                }
             }
         }
     }

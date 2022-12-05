@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class KidBehaviour : StateMachineBase
 {
     PlayerBehaviour _player;
-    [SerializeField] float _patrolAngle;
     [SerializeField] float _followDuration;
     [SerializeField] GameObject _hitEffectPrefab;
 
     public KidGroup Group;
 
-    public float PatrolAngle { get { return _patrolAngle; } }
     public float FollowDuration { get { return _followDuration; } }
 
     bool IsGameOver { get { return CurrentState is KidStates.LoseState || CurrentState is KidStates.WinState; } }
