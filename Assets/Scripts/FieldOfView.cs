@@ -45,7 +45,8 @@ public class FieldOfView : MonoBehaviour
         {
             Vector3 targetPos = collider.transform.position;
             Vector3 targetDir = (targetPos - transform.position).normalized;
-            float targetAngle = Mathf.Acos(Vector3.Dot(transform.forward + new Vector3(0,_additionalRotation, 0), targetDir)) * Mathf.Rad2Deg;
+            Vector3 forward = (Quaternion.Euler(0, _additionalRotation, 0) * transform.forward);
+            float targetAngle = Mathf.Acos(Vector3.Dot(forward, targetDir)) * Mathf.Rad2Deg;
             if (targetAngle <= _viewAngle * 0.5f 
                 && !Physics.Raycast(transform.position, targetDir, _viewRadius, _obstacleMask))
             {

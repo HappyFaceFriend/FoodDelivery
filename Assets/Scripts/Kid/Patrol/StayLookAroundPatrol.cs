@@ -23,6 +23,10 @@ public class StayLookAroundPatrol : PatrolBase
     {
         base.OnExit();
         doUpdate = false;
+        rotation = 0;
+        head.rotation = Quaternion.Euler(head.rotation.eulerAngles + new Vector3(0, 0, 0));
+        Fov.SetAdditionalRotation(0);
+
     }
     public override void Move()
     {

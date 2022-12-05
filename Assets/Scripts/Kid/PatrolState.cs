@@ -18,6 +18,7 @@ namespace KidStates
         {
             base.OnEnter();
             patrol.OnEnter();
+            Kid.Animator.ResetTrigger("Patrol");
             Kid.Animator.SetTrigger(patrol.GetAnimName());
         }
         public override void OnUpdate()
