@@ -21418,6 +21418,7 @@ MonoBehaviour:
   orderManager: {fileID: 1995692342}
   gameOverPanel: {fileID: 1880607180}
   resultPanel: {fileID: 1557946696}
+  starLimit: 
 --- !u!1001 &2119043267
 PrefabInstance:
   m_ObjectHideFlags: 0
