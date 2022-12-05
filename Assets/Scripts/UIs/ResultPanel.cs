@@ -14,11 +14,20 @@ public class ResultPanel : MonoBehaviour
     [SerializeField] TextMeshProUGUI totalFoodText;
     [SerializeField] TextMeshProUGUI totalFailText;
 
-    public void Init(int deliveredCount, int foodCount, int failCount)
+    public void Init(int deliveredCount, int foodCount, int failCount, int starCount)
     {
+        StartCoroutine(StarCoroutine(starCount));
         totalDeliveredText.text = deliveredCount.ToString();
         totalFoodText.text = foodCount.ToString();
         totalFailText.text = failCount.ToString();
+    }
+    IEnumerator StarCoroutine(int starCount)
+    {
+        for(int i=0; i<starCount; i++)
+        {
+            starImages[i].sprite = filledStar;
+            yield return new WaitForSeconds(0.3f);
+        }
     }
 
 }

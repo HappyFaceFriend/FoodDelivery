@@ -9,6 +9,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] Transform gameOverPanel;
     [SerializeField] ResultPanel resultPanel;
 
+    [SerializeField] int[] starLimit;
+
     int successCount = 0;
     int failCount = 0;
     int foodCount = 0;
@@ -34,7 +36,16 @@ public class LevelManager : MonoBehaviour
         leftTime = 0f;
         orderManager.StopSystem = true;
         //결과 보여주고 씬 전환
-        resultPanel.Init(successCount, foodCount, failCount);
+        int star = 1;
+        if (successCount > starLimit[2])
+            star = 3;
+        else if (successCount > starLimit[1])
+            star = 2;
+        else if (successCount > starLimit[0])
+            star = 1;
+        else
+            star = 0;
+        resultPanel.Init(successCount, foodCount, failCount, star);
         gameOverPanel.gameObject.SetActive(true);
         yield return null;
     }
