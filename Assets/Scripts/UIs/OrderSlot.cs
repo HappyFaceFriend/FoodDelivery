@@ -10,14 +10,18 @@ public class OrderSlot : MonoBehaviour
     [SerializeField] Image [] foodImages;
     [SerializeField] Image houseImage;
     [SerializeField] Slider timer;
+    [SerializeField] Gradient timerGradient;
 
     Animator animator;
     Order order;
     public Order Order { get { return order; } }
 
+    Image filler;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        filler = timer.fillRect.GetComponent<Image>();
     }
     public void SetOrder(Order order)
     {
@@ -49,5 +53,6 @@ public class OrderSlot : MonoBehaviour
     public void OnUpdate()
     {
         timer.value = order.timelimit;
+        filler.color = timerGradient.Evaluate(1 - timer.normalizedValue);
     }
 }

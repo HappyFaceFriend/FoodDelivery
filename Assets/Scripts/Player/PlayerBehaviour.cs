@@ -11,6 +11,7 @@ public class PlayerBehaviour : StateMachineBase
     [SerializeField] float _stunDuration;
 
     [SerializeField] GameObject _foodEffect;
+    [SerializeField] GameObject _deliveryEffect;
 
     public FoodManager FoodManager;
     public OrderManager OrderManager;
@@ -56,7 +57,7 @@ public class PlayerBehaviour : StateMachineBase
         FoodBehaviour food = collision.transform.GetComponentInParent<FoodBehaviour>();
         if (food != null)
         {
-            Instantiate(_foodEffect, food.transform.position, Quaternion.identity);
+            Instantiate(_foodEffect, food.transform.position, _foodEffect.transform.rotation);
             food.OnCollideWithPlayer();
             FoodManager.AddFood(food.data);
         }
@@ -80,6 +81,7 @@ public class PlayerBehaviour : StateMachineBase
                             FoodManager.DeleteFood(OrderManager.orderlist[i].Foodlist[j]);
                         }
                         OrderManager.CompleteOrder(OrderManager.orderlist[i]);
+                        Instantiate(_deliveryEffect, transform.position, _deliveryEffect.transform.rotation);
                         Debug.Log("배달 완료했습니다");
                     }
                 }

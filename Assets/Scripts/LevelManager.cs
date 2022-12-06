@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] float leftTime = 60f;
     [SerializeField] OrderManager orderManager;
     [SerializeField] ResultPanel resultPanel;
+    [SerializeField] Slider timer;
+    [SerializeField] Gradient timerGradient;
 
     [SerializeField] int[] starLimit;
 
@@ -14,6 +17,13 @@ public class LevelManager : MonoBehaviour
     int failCount = 0;
     int foodCount = 0;
 
+    Image timerFill;
+    private void Awake()
+    {
+        timerFill = timer.fillRect.GetComponent<Image>();
+        timer.maxValue = leftTime;
+        timer.value = leftTime;
+    }
     private void Start()
     {
         StartCoroutine(RoundCoroutine());
@@ -30,6 +40,7 @@ public class LevelManager : MonoBehaviour
         while(leftTime > 0)
         {
             leftTime -= Time.deltaTime;
+            UpdateTimer();
             yield return null;
         }
         leftTime = 0f;
@@ -55,6 +66,11 @@ public class LevelManager : MonoBehaviour
     {
         successCount++;
         this.foodCount += foodCount;
+    }
+    void UpdateTimer()
+    {
+        timer.value = leftTime;
+        timerFill.color = timerGradient.Evaluate(1 - timer.normalizedValue);
     }
 
 }
