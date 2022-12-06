@@ -28,6 +28,11 @@ namespace KidStates
             base.OnUpdate();
             //_movementController.MoveAndRotateTowards(nextPosition, 0.05f
             bool doMove = true;
+            if (Kid.Group.State == GroupState.Returning)
+            {
+                Kid.ChangeState(new ReturnState(Kid));
+                return;
+            }
             _eTime += Time.deltaTime;
             if (_eTime >= _checkInterval)
             {
