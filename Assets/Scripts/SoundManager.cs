@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,10 +17,14 @@ public class SoundManager : MonoBehaviour
 
     public AudioClip AttackSound;
     public AudioClip HitSound;
-    public AudioClip ClearSound;
+    public AudioClip HittedSound;
+    public AudioClip NewOrderSound;
+    public AudioClip OrderFailSound;
+    public AudioClip OrderSuccessSound;
     public AudioClip OverSound;
+    public AudioClip ResultSound;
     public AudioClip GemSound;
-    public AudioClip AlertSound;
+    public AudioClip AlertSound;    
     public AudioClip ButtonSound;
 
     private void Awake()

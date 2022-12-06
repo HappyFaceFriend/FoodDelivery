@@ -95,6 +95,8 @@ public class OrderManager : MonoBehaviour
 
         orderlist.Add(data);
         ordersPanel.AddOrderSlot(data);
+
+        SoundManager.Instance.PlaySound(SoundManager.Instance.NewOrderSound, 0.35f);
     }
 
     void Update() // freq 시간마다 주문 생성 

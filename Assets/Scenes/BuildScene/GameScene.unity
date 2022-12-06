@@ -8222,7 +8222,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GAME  CLEAR!
+  m_text: Game over!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a807c1b9e6a0030488e41f16eaa9ca21, type: 2}
   m_sharedMaterial: {fileID: -5263700423847104129, guid: a807c1b9e6a0030488e41f16eaa9ca21, type: 2}
@@ -8957,7 +8957,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Time Over!
+  m_text: Time's up!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a807c1b9e6a0030488e41f16eaa9ca21, type: 2}
   m_sharedMaterial: {fileID: -5263700423847104129, guid: a807c1b9e6a0030488e41f16eaa9ca21, type: 2}
@@ -17106,7 +17106,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 16672ee6e15b6384bbfa402181e7ee0e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.44
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -17204,11 +17204,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bgmSource: {fileID: 1364923999}
   _sfxSource: {fileID: 1364923998}
-  AttackSound: {fileID: 8300000, guid: 7c303f313c0c57e4fb8d005f0ae65ebc, type: 3}
+  AttackSound: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
   HitSound: {fileID: 8300000, guid: 04608e661dee36e419e2eb3d6dd4bb79, type: 3}
-  ClearSound: {fileID: 8300000, guid: f2550f92922d74248922d6184f32f68c, type: 3}
+  HittedSound: {fileID: 8300000, guid: 8e8218f6a01e74bd5894788e3f912635, type: 3}
+  NewOrderSound: {fileID: 8300000, guid: 5a2e5cbf168fb4855b0d805f41cf3ae0, type: 3}
+  OrderFailSound: {fileID: 8300000, guid: 92a53ef84f7b1492d9a77f229d54ee83, type: 3}
+  OrderSuccessSound: {fileID: 8300000, guid: fd57e0caacaa6474e9834c86a877baab, type: 3}
   OverSound: {fileID: 8300000, guid: ba8e5c2372d362f4284b119af33bdd41, type: 3}
-  GemSound: {fileID: 8300000, guid: 688a6d76d95a8524ebd3f1ffacb05fc2, type: 3}
+  ResultSound: {fileID: 8300000, guid: f2550f92922d74248922d6184f32f68c, type: 3}
+  GemSound: {fileID: 8300000, guid: 2d481372860dc3a49ab70e04361ae843, type: 3}
   AlertSound: {fileID: 8300000, guid: 89e6bc608da7b47d4914f3d9c2484e48, type: 3}
   ButtonSound: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
 --- !u!4 &1364924001
@@ -26654,6 +26658,7 @@ GameObject:
   - component: {fileID: 3698990372672987157}
   - component: {fileID: 1744173611}
   - component: {fileID: 1744173610}
+  - component: {fileID: 3698990372672987178}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -26682,6 +26687,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -434}
   m_SizeDelta: {x: 600, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3698990372672987178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3698990372672987176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cddd16101652ac64a930b1eb4b42d5ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3698990372915878578
 MonoBehaviour:
   m_ObjectHideFlags: 0

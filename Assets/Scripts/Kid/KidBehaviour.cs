@@ -72,7 +72,6 @@ public class KidBehaviour : StateMachineBase
             {
                 Vector3 effectPos = (transform.position + Player.transform.position) / 2f;
                 Instantiate(_hitEffectPrefab, effectPos, Quaternion.identity);
-                SoundManager.Instance.PlaySound(SoundManager.Instance.HitSound);
                 Player.OnAttackedByKid(this);
                 Group.ReturnAllKids(this);
                 ChangeState(new KidStates.ReturnState(this));

@@ -26,13 +26,17 @@ public class ResultPanel : MonoBehaviour
     public void StartStar()
     {
         StartCoroutine(StarCoroutine(starCount));
+        if (starCount >= 2)
+            SoundManager.Instance.PlaySound(SoundManager.Instance.ResultSound);
     }
     IEnumerator StarCoroutine(int starCount)
     {
         for(int i=0; i<starCount; i++)
         {
-           starImages[i].sprite = filledStar;
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.5f);
+            starImages[i].sprite = filledStar;
+
+            SoundManager.Instance.PlaySound(SoundManager.Instance.HittedSound);
         }
     }
 

@@ -45,7 +45,10 @@ public class PlayerBehaviour : StateMachineBase
     {
         if (CurrentState.GetType() != typeof(KidStates.LoseState) ||
             CurrentState.GetType() != typeof(KidStates.WinState))
+        {
+            SoundManager.Instance.PlaySound(SoundManager.Instance.HittedSound); 
             ChangeState(new PlayerStates.StunnedState(this, _stunDuration));
+        }
     }
     public void OnGameClear()
     {
@@ -59,6 +62,8 @@ public class PlayerBehaviour : StateMachineBase
         {
             Instantiate(_foodEffect, food.transform.position, _foodEffect.transform.rotation);
             food.OnCollideWithPlayer();
+
+            SoundManager.Instance.PlaySound(SoundManager.Instance.GemSound);
             FoodManager.AddFood(food.data);
         }
         HouseBehaviour house = collision.transform.GetComponentInParent<HouseBehaviour>();

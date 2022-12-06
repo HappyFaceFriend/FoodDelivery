@@ -56,16 +56,19 @@ public class LevelManager : MonoBehaviour
         else
             star = 0;
         resultPanel.Open(successCount, foodCount, failCount, star);
+        SoundManager.Instance.PlaySound(SoundManager.Instance.OverSound);
         yield return null;
     }
     public void OnOrderFail()
     {
         failCount++;
+        SoundManager.Instance.PlaySound(SoundManager.Instance.OrderFailSound, 0.4f);
     }
     public void OnOrderDeliver(int foodCount)
     {
         successCount++;
         this.foodCount += foodCount;
+        SoundManager.Instance.PlaySound(SoundManager.Instance.OrderSuccessSound, 0.65f);
     }
     void UpdateTimer()
     {
