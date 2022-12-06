@@ -13,6 +13,8 @@ public class ResultPanel : MonoBehaviour
     [SerializeField] TextMeshProUGUI totalDeliveredText;
     [SerializeField] TextMeshProUGUI totalFoodText;
     [SerializeField] TextMeshProUGUI totalFailText;
+    [SerializeField] TextMeshProUGUI titleText;
+    
 
     int starCount = 3;
     public void Open(int deliveredCount, int foodCount, int failCount, int starCount)
@@ -22,6 +24,8 @@ public class ResultPanel : MonoBehaviour
         totalFailText.text = failCount.ToString();
         gameObject.SetActive(true);
         this.starCount = starCount;
+        if (starCount >= 2)
+            titleText.text = "Game Clear!";
     }
     public void StartStar()
     {

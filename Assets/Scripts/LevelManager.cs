@@ -55,6 +55,11 @@ public class LevelManager : MonoBehaviour
             star = 1;
         else
             star = 0;
+
+        GameObject.FindObjectOfType<PlayerBehaviour>().OnGameClear();
+        foreach (KidBehaviour kid in GameObject.FindObjectsOfType<KidBehaviour>())
+            kid.OnGameClear();
+
         resultPanel.Open(successCount, foodCount, failCount, star);
         SoundManager.Instance.PlaySound(SoundManager.Instance.OverSound);
         yield return null;

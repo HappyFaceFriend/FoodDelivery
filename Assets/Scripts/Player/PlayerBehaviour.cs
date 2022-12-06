@@ -30,6 +30,8 @@ public class PlayerBehaviour : StateMachineBase
 
     public Vector3 GetInputVector()
     {
+        if (CurrentState is PlayerStates.WinState)
+            return Vector3.zero;
         float hor = Input.GetAxis("Horizontal");
         float ver = Input.GetAxis("Vertical");
         Vector3 vec = new Vector3(hor, 0, ver);
