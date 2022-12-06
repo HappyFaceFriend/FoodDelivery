@@ -10,6 +10,8 @@ public class PlayerBehaviour : StateMachineBase
     [SerializeField] float _rotateSpeed;
     [SerializeField] float _stunDuration;
 
+    [SerializeField] GameObject _foodEffect;
+
     public FoodManager FoodManager;
     public OrderManager OrderManager;
 
@@ -54,6 +56,7 @@ public class PlayerBehaviour : StateMachineBase
         FoodBehaviour food = collision.transform.GetComponentInParent<FoodBehaviour>();
         if (food != null)
         {
+            Instantiate(_foodEffect, food.transform.position, Quaternion.identity);
             food.OnCollideWithPlayer();
             FoodManager.AddFood(food.data);
         }
@@ -67,14 +70,14 @@ public class PlayerBehaviour : StateMachineBase
                 {
                     List<Food> templist = FoodManager.FoodList.Intersect(OrderManager.orderlist[i].Foodlist).ToList();
                     templist.Sort();
-                    OrderManager.orderlist[i].Foodlist.Sort();
+                    OrderManager.orderlist[i].Foodlist.Sort((a,b)=>string.Compare(a.Name,b.Name));
                     bool same = templist.SequenceEqual(OrderManager.orderlist[i].Foodlist);
 
                     if (same)
                     {
                         for (int j = 0; j < OrderManager.orderlist[i].Foodlist.Count; j++)
                         {
-                            FoodManager.FoodList.Remove(OrderManager.orderlist[i].Foodlist[j]);
+                            FoodManager.DeleteFood(OrderManager.orderlist[i].Foodlist[j]);
                         }
                         OrderManager.CompleteOrder(OrderManager.orderlist[i]);
                         Debug.Log("배달 완료했습니다");

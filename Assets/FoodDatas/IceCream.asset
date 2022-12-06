@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: IceCream
   m_EditorClassIdentifier: 
   Name: IceCream
-  Icon: {fileID: 21300000, guid: 173c049d7ec1a654c99efa5e9f22f97a, type: 3}
+  foodNum: 0
+  Icon: {fileID: 21300000, guid: 4a7be3a50d5031340a3e84f5f54d1d8b, type: 3}

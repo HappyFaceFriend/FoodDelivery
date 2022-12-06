@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5121711756750243311}
   - component: {fileID: 8376447594360082127}
+  - component: {fileID: -3814728207429481608}
+  - component: {fileID: 7023099251455099874}
   m_Layer: 0
   m_Name: Frappe
   m_TagString: Untagged
@@ -46,6 +48,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 3903fe6b93b88d542a6881988a789d4a, type: 2}
+--- !u!95 &-3814728207429481608
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8233887247498186730}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6063eeec217eafb4e977bb1f2ac5fe9b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!54 &7023099251455099874
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8233887247498186730}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &1430443996049368508
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63,7 +101,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 8136f9dad349d6843baafac3d263875c, type: 2}
     - target: {fileID: 8449134456902389630, guid: eb323cb6688d54249b6a030872eb489c, type: 3}
       propertyPath: m_Name
-      value: Frappe
+      value: mesh
       objectReference: {fileID: 0}
     - target: {fileID: 9082225158417962436, guid: eb323cb6688d54249b6a030872eb489c, type: 3}
       propertyPath: m_RootOrder
@@ -121,7 +159,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 169185057446052496, guid: eb323cb6688d54249b6a030872eb489c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: eb323cb6688d54249b6a030872eb489c, type: 3}
 --- !u!4 &7913808149675683960 stripped
 Transform:

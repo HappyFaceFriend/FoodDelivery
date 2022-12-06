@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Melon
   m_EditorClassIdentifier: 
   Name: Melon
-  Icon: {fileID: 21300000, guid: 9a37dbdea34e2a846a14ea90cea2234b, type: 3}
+  foodNum: 0
+  Icon: {fileID: 21300000, guid: ef75cc108e86f4240a89a1e430e8b175, type: 3}

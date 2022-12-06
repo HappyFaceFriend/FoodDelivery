@@ -83,6 +83,7 @@ MonoBehaviour:
   _animator: {fileID: 6737349280486888189}
   _followDuration: 6
   _hitEffectPrefab: {fileID: 5024009746357069194, guid: ec3f674830402cc45bce805cf6493db7, type: 3}
+  _hittedEffect: {fileID: 4445965333769373574, guid: 25e230d6571a90742a4a0281dc4d4ce5, type: 3}
   Group: {fileID: 0}
 --- !u!114 &2312054670083689967
 MonoBehaviour:

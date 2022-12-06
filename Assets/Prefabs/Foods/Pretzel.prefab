@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2595998703961749897}
   - component: {fileID: 620847512047837026}
+  - component: {fileID: -8777794829130275807}
+  - component: {fileID: 5051742251940614907}
   m_Layer: 0
   m_Name: Pretzel
   m_TagString: Untagged
@@ -46,6 +48,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 3bbabe64db7449249a83d78858d0e864, type: 2}
+--- !u!95 &-8777794829130275807
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7365426421787513921}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6063eeec217eafb4e977bb1f2ac5fe9b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!54 &5051742251940614907
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7365426421787513921}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &4472471509403279480
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 8136f9dad349d6843baafac3d263875c, type: 2}
     - target: {fileID: 1336411805714655030, guid: 381b4876465ff66439c798bbd05934ae, type: 3}
       propertyPath: m_Name
-      value: Pretzel
+      value: mesh
       objectReference: {fileID: 0}
     - target: {fileID: 1855540051227901324, guid: 381b4876465ff66439c798bbd05934ae, type: 3}
       propertyPath: m_RootOrder
@@ -117,7 +155,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1673684814504558671, guid: 381b4876465ff66439c798bbd05934ae, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 381b4876465ff66439c798bbd05934ae, type: 3}
 --- !u!4 &2869174476828532212 stripped
 Transform:

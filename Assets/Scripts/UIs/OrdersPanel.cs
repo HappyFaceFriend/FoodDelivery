@@ -11,6 +11,7 @@ public class OrdersPanel : MonoBehaviour
     {
         OrderSlot slot = Instantiate(orderSlotPrefab, transform);
         slot.SetOrder(order);
+        slot.gameObject.SetActive(true);
         orderSlots.Add(slot);
     }
 

@@ -14,12 +14,13 @@ public class ResultPanel : MonoBehaviour
     [SerializeField] TextMeshProUGUI totalFoodText;
     [SerializeField] TextMeshProUGUI totalFailText;
 
-    public void Init(int deliveredCount, int foodCount, int failCount, int starCount)
+    public void Open(int deliveredCount, int foodCount, int failCount, int starCount)
     {
-        StartCoroutine(StarCoroutine(starCount));
         totalDeliveredText.text = deliveredCount.ToString();
         totalFoodText.text = foodCount.ToString();
         totalFailText.text = failCount.ToString();
+        gameObject.SetActive(true);
+        StartCoroutine(StarCoroutine(starCount));
     }
     IEnumerator StarCoroutine(int starCount)
     {

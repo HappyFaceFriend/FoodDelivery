@@ -11,8 +11,14 @@ public class OrderSlot : MonoBehaviour
     [SerializeField] Image houseImage;
     [SerializeField] Slider timer;
 
+    Animator animator;
     Order order;
     public Order Order { get { return order; } }
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
     public void SetOrder(Order order)
     {
         this.order = order;
@@ -33,6 +39,10 @@ public class OrderSlot : MonoBehaviour
         houseImage.sprite = order.destination.Icon;
     }
     public void Kill()
+    {
+        animator.SetTrigger("Destroy");
+    }
+    public void AnimEvent_Destroy()
     {
         Destroy(gameObject);
     }

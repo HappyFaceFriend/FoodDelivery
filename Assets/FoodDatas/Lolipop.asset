@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Lolipop
   m_EditorClassIdentifier: 
   Name: Lolipop
-  Icon: {fileID: 21300000, guid: 18a07d0873e82f343a94e5a5a2e885f1, type: 3}
+  foodNum: 0
+  Icon: {fileID: 21300000, guid: 52a50e035195812459e7a12c6508ef58, type: 3}

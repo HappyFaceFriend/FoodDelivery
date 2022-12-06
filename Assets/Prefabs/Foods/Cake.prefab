@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2799976669076135600}
   - component: {fileID: -5627675622849771842}
+  - component: {fileID: 6662808448176053425}
+  - component: {fileID: 752874053697613840}
   m_Layer: 0
   m_Name: Cake
   m_TagString: Untagged
@@ -46,6 +48,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 07343193093aac54298a8605ffa37ea7, type: 2}
+--- !u!95 &6662808448176053425
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7386583482648505068}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6063eeec217eafb4e977bb1f2ac5fe9b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!54 &752874053697613840
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7386583482648505068}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &6704182665839312196
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55,7 +93,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2871792608151344360, guid: 00b58c22752558540a1e4fe6b3c74ac8, type: 3}
       propertyPath: m_Name
-      value: Cake
+      value: mesh
       objectReference: {fileID: 0}
     - target: {fileID: 3211480526208912978, guid: 00b58c22752558540a1e4fe6b3c74ac8, type: 3}
       propertyPath: m_RootOrder
@@ -117,7 +155,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8136f9dad349d6843baafac3d263875c, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6785678516327828118, guid: 00b58c22752558540a1e4fe6b3c74ac8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 00b58c22752558540a1e4fe6b3c74ac8, type: 3}
 --- !u!4 &8186262198258676502 stripped
 Transform:

@@ -6,7 +6,6 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] float leftTime = 60f;
     [SerializeField] OrderManager orderManager;
-    [SerializeField] Transform gameOverPanel;
     [SerializeField] ResultPanel resultPanel;
 
     [SerializeField] int[] starLimit;
@@ -45,11 +44,9 @@ public class LevelManager : MonoBehaviour
             star = 1;
         else
             star = 0;
-        resultPanel.Init(successCount, foodCount, failCount, star);
-        gameOverPanel.gameObject.SetActive(true);
+        resultPanel.Open(successCount, foodCount, failCount, star);
         yield return null;
     }
-
     public void OnOrderFail()
     {
         failCount++;

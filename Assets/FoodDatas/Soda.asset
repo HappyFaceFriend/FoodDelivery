@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Soda
   m_EditorClassIdentifier: 
   Name: Soda
-  Icon: {fileID: 21300000, guid: ac210b70f236c6446bf8288fd4faaa52, type: 3}
+  foodNum: 0
+  Icon: {fileID: 21300000, guid: b9e8fcac9409aa54490ede2b7b0f327d, type: 3}

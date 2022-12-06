@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Pretzel
   m_EditorClassIdentifier: 
   Name: Pretzel
-  Icon: {fileID: 21300000, guid: 2bef82be15d5ebc42a833ab13b6b6bf3, type: 3}
+  foodNum: 0
+  Icon: {fileID: 21300000, guid: 0a013de704b6ac5489044b7fc0d52e45, type: 3}

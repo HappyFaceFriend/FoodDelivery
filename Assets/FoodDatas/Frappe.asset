@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Frappe
   m_EditorClassIdentifier: 
   Name: Frappe
-  Icon: {fileID: 21300000, guid: c4eebc030a926eb4787b21b43ee41c21, type: 3}
+  foodNum: 0
+  Icon: {fileID: 21300000, guid: 8cf9b7ca9e7bd424ea90e605b1fd0d26, type: 3}

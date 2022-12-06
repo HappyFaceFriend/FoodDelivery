@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Hotdog
   m_EditorClassIdentifier: 
   Name: Hotdog
-  Icon: {fileID: 21300000, guid: eb72697d437a0284daec9cc49592c95c, type: 3}
+  foodNum: 0
+  Icon: {fileID: 21300000, guid: ff9a242239356cc429dbc0b9aef201e1, type: 3}

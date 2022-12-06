@@ -8,6 +8,9 @@ public class KidBehaviour : StateMachineBase
     PlayerBehaviour _player;
     [SerializeField] float _followDuration;
     [SerializeField] GameObject _hitEffectPrefab;
+    [SerializeField] GameObject _hittedEffect;
+
+    Rigidbody rigidbody;
 
     public KidGroup Group;
 
@@ -33,6 +36,7 @@ public class KidBehaviour : StateMachineBase
                 !(CurrentState is KidStates.FollowState || CurrentState is KidStates.StunnedState) &&
                 !IsGameOver)
             ChangeState(new KidStates.FollowState(this));
+        rigidbody.velocity = Vector3.zero;
     }
     public void AlertByMate()
     {
@@ -42,12 +46,17 @@ public class KidBehaviour : StateMachineBase
     {
         if (CurrentState.GetType() != typeof(KidStates.LoseState) ||
             CurrentState.GetType() != typeof(KidStates.WinState))
+        {
+            Vector3 effectPos = (transform.position + Player.transform.position) / 2f;
+            Instantiate(_hittedEffect, effectPos, Quaternion.identity);
             ChangeState(new KidStates.StunnedState(this, stunDuration));
+        }
     }
     private void Awake()
     {
         OriginalPosition = transform.position;
         OriginalRotation = transform.rotation;
+        rigidbody = GetComponent<Rigidbody>();
     }
 
     protected override StateBase GetInitialState()
