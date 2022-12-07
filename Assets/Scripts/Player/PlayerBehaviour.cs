@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+
+
 public class PlayerBehaviour : StateMachineBase
 {
     [SerializeField] float _moveSpeed;
@@ -10,12 +12,15 @@ public class PlayerBehaviour : StateMachineBase
     [SerializeField] float _rotateSpeed;
     [SerializeField] float _stunDuration;
 
+    [SerializeField] LevelManager _levelManager;
     [SerializeField] GameObject _foodEffect;
     [SerializeField] GameObject _deliveryEffect;
 
     public FoodManager FoodManager;
     public OrderManager OrderManager;
 
+    Rigidbody rigidbody;
+    [SerializeField] Vector3 carCollisionVec = Vector3.zero;
     public float MoveSpeed { get { return _moveSpeed; } }
     public float DashSpeed { get { return _dashSpeed; } }
     public float RotateSpeed { get { return _rotateSpeed; } }
@@ -25,9 +30,15 @@ public class PlayerBehaviour : StateMachineBase
     private void Awake()
     {
         AttackController = GetComponent<AttackController>();
+        rigidbody = GetComponent<Rigidbody>();
+    }
+    private void Update()
+    {
+        base.Update();
+        if (carCollisionVec != Vector3.zero)
+            transform.position += carCollisionVec * Time.deltaTime;
 
     }
-
     public Vector3 GetInputVector()
     {
         if (CurrentState is PlayerStates.WinState)
@@ -94,13 +105,18 @@ public class PlayerBehaviour : StateMachineBase
                 }
             }
         }
+        CarBehaviour car = collision.transform.GetComponent<CarBehaviour>();
+        if (car != null)
+        {
+            _levelManager.OnHitByCar();
+            carCollisionVec = (transform.position - car.transform.position);
+            print(transform.position + " " + car.transform.position);
+            carCollisionVec.y = 0;
+            carCollisionVec = carCollisionVec.normalized * 20;
+            ChangeState(new PlayerStates.WinState(this));
+        }
     }
     void OnTriggerEnter(Collider other)
     {
-        CarBehaviour car = other.GetComponent<CarBehaviour>();
-        if (car != null)
-        {
-            car.OnCollideWithPlayer();
-        }
     }
 }

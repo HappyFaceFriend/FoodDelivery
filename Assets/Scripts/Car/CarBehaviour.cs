@@ -33,7 +33,6 @@ public class CarBehaviour : MonoBehaviour
 
     public void OnCollideWithController()
     {
-        Debug.Log("충돌했습니다");
         Destroy(this.gameObject);
     }
 

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] float leftTime = 60f;
+    [SerializeField] CameraBehaviour cameraFollower;
     [SerializeField] OrderManager orderManager;
     [SerializeField] ResultPanel resultPanel;
     [SerializeField] Slider timer;
@@ -73,6 +74,7 @@ public class LevelManager : MonoBehaviour
     public void OnHitByCar()
     {
         resultPanel.Open(successCount, foodCount, failCount, GetStartCount(), true);
+        cameraFollower.FollowSpeed = 0f;
     }
     public void OnOrderFail()
     {
