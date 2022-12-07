@@ -46,6 +46,19 @@ public class LevelManager : MonoBehaviour
         leftTime = 0f;
         orderManager.StopSystem = true;
         //결과 보여주고 씬 전환
+
+        
+
+        GameObject.FindObjectOfType<PlayerBehaviour>().OnGameClear();
+        foreach (KidBehaviour kid in GameObject.FindObjectsOfType<KidBehaviour>())
+            kid.OnGameClear();
+
+        resultPanel.Open(successCount, foodCount, failCount, GetStartCount());
+        SoundManager.Instance.PlaySound(SoundManager.Instance.OverSound);
+        yield return null;
+    }
+    int GetStartCount()
+    {
         int star = 1;
         if (successCount >= starLimit[2])
             star = 3;
@@ -55,14 +68,11 @@ public class LevelManager : MonoBehaviour
             star = 1;
         else
             star = 0;
-
-        GameObject.FindObjectOfType<PlayerBehaviour>().OnGameClear();
-        foreach (KidBehaviour kid in GameObject.FindObjectsOfType<KidBehaviour>())
-            kid.OnGameClear();
-
-        resultPanel.Open(successCount, foodCount, failCount, star);
-        SoundManager.Instance.PlaySound(SoundManager.Instance.OverSound);
-        yield return null;
+        return star;
+    }
+    public void OnHitByCar()
+    {
+        resultPanel.Open(successCount, foodCount, failCount, GetStartCount(), true);
     }
     public void OnOrderFail()
     {
