@@ -88,7 +88,7 @@ public class PlayerBehaviour : StateMachineBase
                 if (OrderManager.orderlist[i].destination == house.getHouse())
                 {
                     List<Food> templist = FoodManager.FoodList.Intersect(OrderManager.orderlist[i].Foodlist).ToList();
-                    templist.Sort();
+                    templist.Sort((a, b) => string.Compare(a.Name, b.Name));
                     OrderManager.orderlist[i].Foodlist.Sort((a,b)=>string.Compare(a.Name,b.Name));
                     bool same = templist.SequenceEqual(OrderManager.orderlist[i].Foodlist);
 
