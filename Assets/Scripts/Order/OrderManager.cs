@@ -110,7 +110,7 @@ public class OrderManager : MonoBehaviour
         {
             MakeOrder();
             //Debug.Log(orderlist.Count + "개의 주문받았습니다");
-            if(orderlist.Count > 1) updateTime = freqPlus;
+            if(orderlist.Count > 2) updateTime = freqPlus;
             else if(orderlist.Count > 7) updateTime = -5000.0f;
             else updateTime = freqMinus;
         }
