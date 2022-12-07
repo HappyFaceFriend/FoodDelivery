@@ -42,6 +42,8 @@ public class OrderManager : MonoBehaviour
 
     void MakeOrder()
     {
+        if (orderlist.Count == 6)
+            return;
         Order data = new Order();
         /*data.destination = houselist[makeDest()];*/
 

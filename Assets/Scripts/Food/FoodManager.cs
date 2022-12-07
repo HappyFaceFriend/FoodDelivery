@@ -16,6 +16,8 @@ public class FoodManager : MonoBehaviour
     
     public void AddFood(Food obj) 
     {
+        if (FoodList.Count >= 10)
+            return;
         inventory.Add(obj);
         FoodList.Add(obj);
         count++;
