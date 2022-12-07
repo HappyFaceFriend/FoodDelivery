@@ -128,10 +128,10 @@ public class OrderManager : MonoBehaviour
                     orderlist[i].timelimit -= Time.deltaTime;
                 if (orderlist[i].timelimit <= 0)
                 {
+                    houselist.Add(orderlist[i].destination);
                     ordersPanel.RemoveOrderSlot(orderlist[i]);
                     orderlist.RemoveAt(i);
                     levelManager.OnOrderFail();
-                    houselist.Add(orderlist[i].destination);
                     for (int j =0; j < orderlist[i].Foodlist.Count; j++)
                     {
                         orderlist[i].Foodlist[j].foodNum--;
