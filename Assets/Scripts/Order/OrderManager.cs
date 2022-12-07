@@ -65,7 +65,7 @@ public class OrderManager : MonoBehaviour
         int foodCount = 1;
         if (r < 0.6f)
             foodCount = 1;
-        else if (r < 0.8f)
+        else if (r < 0.85f)
             foodCount = 2;
         else
             foodCount = 3;

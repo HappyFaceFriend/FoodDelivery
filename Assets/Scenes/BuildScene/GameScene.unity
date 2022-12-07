@@ -17928,7 +17928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63740f4632bf41a4f95cc4e567814014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftTime: 60
+  leftTime: 100
   cameraFollower: {fileID: 118302334}
   orderManager: {fileID: 1951106626}
   resultPanel: {fileID: 1554130288}
