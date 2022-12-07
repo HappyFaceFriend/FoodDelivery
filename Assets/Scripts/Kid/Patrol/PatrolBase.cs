@@ -10,12 +10,14 @@ public abstract class PatrolBase : MonoBehaviour
     protected MovementController MoveController;
 
     [SerializeField] float FOVIncrease = 2f;
+    float originalFOV;
     public abstract string GetAnimName();
     protected void Awake()
     {
         Fov = GetComponent<FieldOfView>();
         Kid = GetComponent<KidBehaviour>();
         MoveController = GetComponent<MovementController>();
+        originalFOV = Fov.ViewRadius;
     }
     public virtual void OnEnter() 
     {
@@ -38,12 +40,12 @@ public abstract class PatrolBase : MonoBehaviour
     }
     public void FollowPlayer()
     {
-        Fov.ViewRadius *= FOVIncrease;
+        Fov.ViewRadius = originalFOV * FOVIncrease;
         Kid.ChangeState(new KidStates.FollowState(Kid));
     }
     public void OnStopFollow()
     {
-        Fov.ViewRadius /= FOVIncrease;
+        Fov.ViewRadius = originalFOV;
 
     }
 }

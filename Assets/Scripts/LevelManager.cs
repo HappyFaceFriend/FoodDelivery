@@ -47,11 +47,11 @@ public class LevelManager : MonoBehaviour
         orderManager.StopSystem = true;
         //결과 보여주고 씬 전환
         int star = 1;
-        if (successCount > starLimit[2])
+        if (successCount >= starLimit[2])
             star = 3;
-        else if (successCount > starLimit[1])
+        else if (successCount >= starLimit[1])
             star = 2;
-        else if (successCount > starLimit[0])
+        else if (successCount >= starLimit[0])
             star = 1;
         else
             star = 0;

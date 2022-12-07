@@ -91,6 +91,7 @@ public class KidGroup : MonoBehaviour
         FoodBehaviour newFood = Instantiate(foodPrefab, transform);
         food = newFood;
         food.transform.position = foodPosition;
+        spawningFood = false;
     }
 
 }
