@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
@@ -55,7 +56,12 @@ public class LevelManager : MonoBehaviour
         foreach (KidBehaviour kid in GameObject.FindObjectsOfType<KidBehaviour>())
             kid.OnGameClear();
 
+        int star = GetStartCount();
+
         resultPanel.Open(successCount, foodCount, failCount, GetStartCount(), car);
+        string sceneName = SceneManager.GetActiveScene().name;
+        if (PlayerPrefs.GetInt(sceneName, 0) >= star)
+            PlayerPrefs.SetInt(sceneName, star);
         SoundManager.Instance.PlaySound(SoundManager.Instance.OverSound);
     }
     int GetStartCount()

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class TitleSceneManager : MonoBehaviour
 {
+    [SerializeField] GameObject selectStagePanel;
     [SerializeField] Animator playerAnimator;
     [SerializeField] List<Animator> kidAnimators;
     [SerializeField] float animSpeed = 1f;
@@ -55,7 +56,11 @@ public class TitleSceneManager : MonoBehaviour
     }
     public void OnStartButtonClick()
     {
-        SceneManager.LoadScene("GameScene");
+        selectStagePanel.SetActive(true);
+    }
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
     public void OnQuitButtonClick()
     {
