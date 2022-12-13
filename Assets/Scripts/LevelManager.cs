@@ -55,7 +55,7 @@ public class LevelManager : MonoBehaviour
         foreach (KidBehaviour kid in GameObject.FindObjectsOfType<KidBehaviour>())
             kid.OnGameClear();
 
-        resultPanel.Open(successCount, foodCount, failCount, GetStartCount());
+        resultPanel.Open(successCount, foodCount, failCount, GetStartCount(), car);
         SoundManager.Instance.PlaySound(SoundManager.Instance.OverSound);
     }
     int GetStartCount()
@@ -71,8 +71,10 @@ public class LevelManager : MonoBehaviour
             star = 0;
         return star;
     }
+    bool car = false;
     public void OnHitByCar()
     {
+        car = true;
         cameraFollower.FollowSpeed = 0f;
         leftTime = 0f;
         //GameOver();

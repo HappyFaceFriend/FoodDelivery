@@ -24,7 +24,11 @@ public class CarController : MonoBehaviour
         CarBehaviour car = Instantiate(carprefab);
         int randompoint = Random.Range(0, 4);
         car.transform.position = startpoint[randompoint].position;
-        if (randompoint == 1 || randompoint == 3) car.checkpoint = -1;
+        if (randompoint == 1 || randompoint == 3)
+        {
+            car.checkpoint = -1;
+            car.transform.rotation = Quaternion.Euler(car.transform.rotation.x, car.transform.rotation.y + 180, car.transform.rotation.z);
+        }
     }
 
     void Update() // freq 시간마다 주문 생성 
