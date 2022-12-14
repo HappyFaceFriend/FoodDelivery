@@ -1372,11 +1372,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 321232116, guid: e461bc7d10ea4db40b9e4b0d8cb9a334, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: GameScene 2
+      value: GameScene 0
       objectReference: {fileID: 0}
     - target: {fileID: 6193714391178045415, guid: e461bc7d10ea4db40b9e4b0d8cb9a334, type: 3}
       propertyPath: stage
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7825125039058592208, guid: e461bc7d10ea4db40b9e4b0d8cb9a334, type: 3}
       propertyPath: m_Pivot.x
@@ -4447,11 +4447,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 321232116, guid: e461bc7d10ea4db40b9e4b0d8cb9a334, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: GameScene 1
+      value: GameScene 2
       objectReference: {fileID: 0}
     - target: {fileID: 6193714391178045415, guid: e461bc7d10ea4db40b9e4b0d8cb9a334, type: 3}
       propertyPath: stage
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7825125039058592208, guid: e461bc7d10ea4db40b9e4b0d8cb9a334, type: 3}
       propertyPath: m_Pivot.x
@@ -13163,6 +13163,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1433157618}
+    - target: {fileID: 321232116, guid: e461bc7d10ea4db40b9e4b0d8cb9a334, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: GameScene 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6193714391178045415, guid: e461bc7d10ea4db40b9e4b0d8cb9a334, type: 3}
+      propertyPath: stage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7825125039058592208, guid: e461bc7d10ea4db40b9e4b0d8cb9a334, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
