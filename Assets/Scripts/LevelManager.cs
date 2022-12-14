@@ -15,7 +15,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] int[] starLimit;
 
-    int successCount = 0;
+    [SerializeField] int successCount = 0;
     int failCount = 0;
     int foodCount = 0;
 
@@ -60,8 +60,9 @@ public class LevelManager : MonoBehaviour
 
         resultPanel.Open(successCount, foodCount, failCount, GetStartCount(), car);
         string sceneName = SceneManager.GetActiveScene().name;
-        if (PlayerPrefs.GetInt(sceneName, 0) >= star)
+        if (PlayerPrefs.GetInt(sceneName, 0) <= star)
             PlayerPrefs.SetInt(sceneName, star);
+
         SoundManager.Instance.PlaySound(SoundManager.Instance.OverSound);
     }
     int GetStartCount()

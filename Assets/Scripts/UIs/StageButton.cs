@@ -12,14 +12,14 @@ public class StageButton : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
-            int star = PlayerPrefs.GetInt("GameScene " + stage.ToString(), 0);
-            for(int i = 0; i<3; i++)
-            {
-                if (i < star)
-                    starImages[i].sprite = filledStar;
-                else
-                    starImages[i].sprite = emptyStar;
-            }
+        int star = PlayerPrefs.GetInt("GameScene " + stage.ToString(), 0);
+        for(int i = 0; i<3; i++)
+        {
+            if (i < star)
+                starImages[i].sprite = filledStar;
+            else
+                starImages[i].sprite = emptyStar;
+        }
     }
 
 }
